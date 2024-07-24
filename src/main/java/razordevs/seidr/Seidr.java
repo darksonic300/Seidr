@@ -18,6 +18,7 @@ import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
+import razordevs.seidr.client.SeidrSoundEvents;
 import razordevs.seidr.event.SeidrEvents;
 import razordevs.seidr.items.SeidrItems;
 
@@ -25,13 +26,14 @@ import razordevs.seidr.items.SeidrItems;
 public class Seidr
 {
     // Define mod id in a common place for everything to reference
-    public static final String MODID = "seior";
+    public static final String MODID = "seidr";
     // Directly reference a slf4j logger
     private static final Logger LOGGER = LogUtils.getLogger();
 
     public Seidr(IEventBus modEventBus, ModContainer modContainer)
     {
         SeidrItems.ITEMS.register(modEventBus);
+        SeidrSoundEvents.SOUNDS.register(modEventBus);
 
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
         this.eventSetup(modEventBus);
