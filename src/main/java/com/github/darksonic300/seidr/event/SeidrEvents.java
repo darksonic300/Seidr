@@ -38,7 +38,8 @@ public class SeidrEvents {
             }
 
             if (event.getDuration() == 0) {
-                SoundBoomProjectile projectile = new SoundBoomProjectile(event.getEntity().level(), event.getEntity(), 0f,0f,0f);
+                SoundBoomProjectile projectile = new SoundBoomProjectile(event.getEntity().level(), event.getEntity(), 10f,10f,10f);
+                projectile.moveTo(event.getEntity().getX(), event.getEntity().getY() + 1.8, event.getEntity().getZ(), 0, 0);
                 projectile.shootFromRotation(event.getEntity(), event.getEntity().getXRot(), event.getEntity().getYRot(), 0.0F, 10.0F, 0.0F);
                 event.getEntity().level().addFreshEntity(projectile);
                 event.getEntity().playSound(SoundEvents.WARDEN_SONIC_BOOM, 0.5F, 1.0F);
