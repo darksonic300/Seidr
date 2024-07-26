@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_complete_undead_tablet": {
+      "conditions": {
+        "items": [
+          {
+            "items": "seidr:complete_undead_tablet"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "seidr:item.seidr.complete_undead_tablet"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_complete_undead_tablet"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "seidr:item.seidr.complete_undead_tablet"
+    ]
+  }
+}

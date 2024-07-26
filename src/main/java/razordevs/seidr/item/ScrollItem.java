@@ -1,9 +1,10 @@
-package razordevs.seidr.items;
+package razordevs.seidr.item;
 
+import net.minecraft.core.particles.ParticleOptions;
+import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.core.particles.SculkChargeParticleOptions;
+import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
@@ -12,20 +13,24 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.ItemUtils;
 import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.NoteBlock;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import razordevs.seidr.client.SeidrSoundEvents;
+import razordevs.seidr.particle.SeidrParticleTypes;
 
 public class ScrollItem extends Item {
     private int cooldown;
     private int duration;
-    private int i = 0;
+    private boolean currentlyUsing;
 
     public ScrollItem(Properties pProperties, int cooldown, int duration) {
         super(pProperties);
         this.cooldown = cooldown;
         this.duration = duration;
+        this.currentlyUsing = false;
     }
 
     @Override
@@ -33,14 +38,19 @@ public class ScrollItem extends Item {
         if(pLivingEntity instanceof Player player)
             player.getCooldowns().addCooldown(this, cooldown);
 
+        pLevel.addParticle(SeidrParticleTypes.WAVE_PARTICLE.get(), pLivingEntity.getX(), pLivingEntity.getY(), pLivingEntity.getZ(), 0.0D, 0.0D, 0.0D);
         return pStack;
     }
 
     @Override
+    public void onStopUsing(ItemStack stack, LivingEntity entity, int count) {
+        this.currentlyUsing = false;
+    }
+
+    @Override
     public InteractionResultHolder<ItemStack> use(Level pLevel, Player pPlayer, InteractionHand pUsedHand) {
-        ItemStack itemstack = pPlayer.getItemInHand(pUsedHand);
-        pPlayer.startUsingItem(pUsedHand);
-        return InteractionResultHolder.sidedSuccess(itemstack, pLevel.isClientSide());
+        this.currentlyUsing = true;
+        return ItemUtils.startUsingInstantly(pLevel, pPlayer, pUsedHand);
     }
 
     @Override
@@ -50,12 +60,19 @@ public class ScrollItem extends Item {
         // Random particles for Client
         if(pLevel.isClientSide) {
             if (pRemainingUseDuration % 3 == 0) {
-                pLevel.addParticle(ParticleTypes.NOTE, pLivingEntity.getX() + random.nextFloat(), pLivingEntity.getY() + 1.3, pLivingEntity.getZ() + random.nextFloat(), 0, 0, 0);
-                pLevel.addParticle(ParticleTypes.NOTE, pLivingEntity.getX() + random.nextFloat(), pLivingEntity.getY() + 1.3, pLivingEntity.getZ() - random.nextFloat(), 0, 0, 0);
+                if(random.nextBoolean())
+                    pLevel.addParticle(SeidrParticleTypes.NORSE_PARTICLE.get(), pLivingEntity.getX() + random.nextFloat(), pLivingEntity.getY() + 1.3 + random.nextFloat(), pLivingEntity.getZ() + random.nextFloat(), 0, 0, 0);
+                else
+                    pLevel.addParticle(SeidrParticleTypes.NORSE_PARTICLE.get(), pLivingEntity.getX() + random.nextFloat(), pLivingEntity.getY() + 1.3 + random.nextFloat(), pLivingEntity.getZ() - random.nextFloat(), 0, 0, 0);
             }
+
             if (pRemainingUseDuration % 5 == 0) {
-                pLevel.addParticle(ParticleTypes.NOTE, pLivingEntity.getX() - random.nextFloat(), pLivingEntity.getY() + 1.3, pLivingEntity.getZ() + random.nextFloat(), 0, 0, 0);
-                pLevel.addParticle(ParticleTypes.NOTE, pLivingEntity.getX() - random.nextFloat(), pLivingEntity.getY() + 1.3, pLivingEntity.getZ() - random.nextFloat(), 0, 0, 0);
+                if(random.nextBoolean())
+                    pLevel.addParticle(SeidrParticleTypes.NORSE_PARTICLE.get(), pLivingEntity.getX() - random.nextFloat(), pLivingEntity.getY() + 1.3 + random.nextFloat(), pLivingEntity.getZ() + random.nextFloat(), 0, 0, 0);
+                else
+                    pLevel.addParticle(SeidrParticleTypes.NORSE_PARTICLE.get(), pLivingEntity.getX() - random.nextFloat(), pLivingEntity.getY() + 1.3 + random.nextFloat(), pLivingEntity.getZ() - random.nextFloat(), 0, 0, 0);
+
+                pLevel.addParticle(ParticleTypes.NOTE, pLivingEntity.getX() + (0.5 - random.nextFloat()), pLivingEntity.getY() + 2.1, pLivingEntity.getZ() + (0.5 - random.nextFloat()), 0, 0, 0);
             }
         }
 
@@ -84,6 +101,11 @@ public class ScrollItem extends Item {
         return cooldown;
     }
 
+    public boolean isInUse() {
+        return currentlyUsing;
+    }
+
+
     @Override
     public int getUseDuration(ItemStack pStack, LivingEntity livingEntity) {
         return duration;
@@ -91,11 +113,15 @@ public class ScrollItem extends Item {
 
     @Override
     public UseAnim getUseAnimation(ItemStack pStack) {
-        return UseAnim.TOOT_HORN;
+        return UseAnim.NONE;
     }
 
     @Override
     public boolean isFoil(ItemStack pStack) {
         return true;
+    }
+
+    private static ParticleOptions randomParticle(RandomSource random){
+        return random.nextInt(3) == 0 ? ParticleTypes.NOTE : SeidrParticleTypes.NORSE_PARTICLE.get();
     }
 }

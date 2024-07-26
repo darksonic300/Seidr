@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "D": {
+      "item": "minecraft:diamond"
+    },
+    "T": {
+      "item": "seidr:effect_remove_tablet"
+    }
+  },
+  "pattern": [
+    "DTD",
+    "D D",
+    "DDD"
+  ],
+  "result": {
+    "count": 2,
+    "id": "seidr:effect_remove_tablet"
+  }
+}

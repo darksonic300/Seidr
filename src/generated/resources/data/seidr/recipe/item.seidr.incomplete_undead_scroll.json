@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "D": {
+      "item": "minecraft:paper"
+    },
+    "T": {
+      "item": "seidr:incomplete_undead_tablet"
+    }
+  },
+  "pattern": [
+    "DDD",
+    "DTD",
+    "DDD"
+  ],
+  "result": {
+    "count": 1,
+    "id": "seidr:incomplete_undead_scroll"
+  }
+}

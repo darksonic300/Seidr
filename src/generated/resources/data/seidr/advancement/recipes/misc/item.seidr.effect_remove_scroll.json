@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_effect_remove_scroll": {
+      "conditions": {
+        "items": [
+          {
+            "items": "seidr:effect_remove_scroll"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "seidr:item.seidr.effect_remove_scroll"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_effect_remove_scroll"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "seidr:item.seidr.effect_remove_scroll"
+    ]
+  }
+}

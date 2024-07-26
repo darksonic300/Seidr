@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "D": {
+      "item": "minecraft:diamond"
+    },
+    "T": {
+      "item": "seidr:complete_undead_tablet"
+    }
+  },
+  "pattern": [
+    "DTD",
+    "D D",
+    "DDD"
+  ],
+  "result": {
+    "count": 2,
+    "id": "seidr:complete_undead_tablet"
+  }
+}
