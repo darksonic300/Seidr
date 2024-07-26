@@ -1,4 +1,4 @@
-// 1.21	2024-07-26T16:43:19.4507505	Recipes
+// 1.21	2024-07-26T21:07:46.5654425	Recipes
 ad1a46a4de132ef31bc47f8436cddbf827c51cbb data/seidr/advancement/recipes/misc/item.seidr.complete_resistance_scroll.json
 ef2102df661efd99e7549e7e49e9615d53affb9d data/seidr/advancement/recipes/misc/item.seidr.complete_resistance_tablet.json
 e6152c6a2f496aeee9c2c74a505b90ea60730efe data/seidr/advancement/recipes/misc/item.seidr.complete_undead_scroll.json
@@ -20,14 +20,14 @@ ed881c79a8007935f38606be0d70b853c89435ef data/seidr/recipe/item.seidr.complete_r
 b8e4ae27e4aed28927df48c926103c68c84bb063 data/seidr/recipe/item.seidr.complete_undead_scroll.json
 09d948fc5eaa9f57716ae6581b0281b81cc9f6a4 data/seidr/recipe/item.seidr.complete_undead_tablet.json
 7194fe4f02f3682d80b7561ede2a87533f8e6958 data/seidr/recipe/item.seidr.damaged_resistance_scroll.json
-abb84051ec4b13b53aa0733379fe37bb8c1615c3 data/seidr/recipe/item.seidr.damaged_resistance_tablet.json
+d96cb71cebcae94ca288ce25a372c56868a18621 data/seidr/recipe/item.seidr.damaged_resistance_tablet.json
 b53fa0757ba982c184133092d3115f2d7cf33f05 data/seidr/recipe/item.seidr.damaged_undead_scroll.json
-0b6531d1ae883741bfedda27620f21bf35c56f8a data/seidr/recipe/item.seidr.damaged_undead_tablet.json
+4326baf56ea6a3721e50738eeb232c57e9dfd2f9 data/seidr/recipe/item.seidr.damaged_undead_tablet.json
 d3858eed60c6072fe2393c8dcfd8dff56ff31445 data/seidr/recipe/item.seidr.effect_remove_scroll.json
 c195ce4c4df66f402bcafe831429049125c71bf0 data/seidr/recipe/item.seidr.effect_remove_tablet.json
 36f0c2cd4b339a2b4e3127b59b288efc9ee95880 data/seidr/recipe/item.seidr.incomplete_resistance_scroll.json
-5e5e6015ad01043b673688b8b9aff76d2c248682 data/seidr/recipe/item.seidr.incomplete_resistance_tablet.json
+f002fd8d994e96334fe244a05474f8661c548dfe data/seidr/recipe/item.seidr.incomplete_resistance_tablet.json
 b029f220785723dab4ae4ddcb331db7f00d2182c data/seidr/recipe/item.seidr.incomplete_undead_scroll.json
-87cbca8aef8ef34137a27e860d3a4dfabfecb21c data/seidr/recipe/item.seidr.incomplete_undead_tablet.json
+9883cfba9cd4ff5a2d173bd83ab9dc413de078cf data/seidr/recipe/item.seidr.incomplete_undead_tablet.json
 4b70e5efda3c8e454e401f6e33bb089e14a99713 data/seidr/recipe/item.seidr.sound_blast_scroll.json
 eb4842c16a69ee430344920baa577f01fa3410ec data/seidr/recipe/item.seidr.sound_blast_tablet.json

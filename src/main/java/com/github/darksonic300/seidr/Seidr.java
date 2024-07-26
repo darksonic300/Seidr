@@ -4,6 +4,8 @@ import com.github.darksonic300.seidr.client.SeidrSoundEvents;
 import com.github.darksonic300.seidr.client.renderer.SeidrRenderers;
 import com.github.darksonic300.seidr.datagen.SeidrItemModelData;
 import com.github.darksonic300.seidr.datagen.SeidrRecipeData;
+import com.github.darksonic300.seidr.datagen.tags.SeidrBlockTagData;
+import com.github.darksonic300.seidr.datagen.tags.SeidrItemTagData;
 import com.github.darksonic300.seidr.entity.SeidrEntityTypes;
 import com.github.darksonic300.seidr.item.SeidrScrollItems;
 import com.github.darksonic300.seidr.particle.SeidrParticleTypes;
@@ -66,6 +68,8 @@ public class Seidr
 
         // Server Data
         generator.addProvider(event.includeServer(), new SeidrRecipeData(packOutput, lookupProvider));
-
+        SeidrBlockTagData blockTags = new SeidrBlockTagData(packOutput, lookupProvider, fileHelper);
+        generator.addProvider(event.includeServer(), blockTags);
+        generator.addProvider(event.includeServer(), new SeidrItemTagData(packOutput, lookupProvider, blockTags.contentsGetter()));
     }
 }

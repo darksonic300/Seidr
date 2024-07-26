@@ -1,0 +1,12 @@
+{
+  "values": [
+    "seidr:incomplete_undead_scroll",
+    "seidr:damaged_undead_scroll",
+    "seidr:complete_undead_scroll",
+    "seidr:effect_remove_scroll",
+    "seidr:incomplete_resistance_scroll",
+    "seidr:damaged_resistance_scroll",
+    "seidr:complete_resistance_scroll",
+    "seidr:sound_blast_scroll"
+  ]
+}
