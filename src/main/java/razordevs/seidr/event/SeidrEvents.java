@@ -30,12 +30,12 @@ public class SeidrEvents {
     }
 
     public static void checkForSoundBlastScroll(LivingEntityUseItemEvent event) {
-        if(event.getDuration() == SeidrScrollItems.SOUND_BLAST_SCROLL.get().getUseDuration(event.getItem(), event.getEntity()) / 4) {
-            event.getEntity().playSound(SoundEvents.WARDEN_SONIC_CHARGE, 0.5F, 1.0F);
-        }
+        if (event.getItem().is(SeidrScrollItems.SOUND_BLAST_SCROLL.get())) {
+            if (event.getDuration() == SeidrScrollItems.SOUND_BLAST_SCROLL.get().getUseDuration(event.getItem(), event.getEntity()) / 3) {
+                event.getEntity().playSound(SoundEvents.WARDEN_SONIC_CHARGE, 0.5F, 1.0F);
+            }
 
-        if(event.getDuration() == 0) {
-            if (event.getItem().is(SeidrScrollItems.SOUND_BLAST_SCROLL.get())){
+            if (event.getDuration() == 0) {
                 event.getEntity().playSound(SoundEvents.WARDEN_SONIC_BOOM, 0.5F, 1.0F);
             }
         }
