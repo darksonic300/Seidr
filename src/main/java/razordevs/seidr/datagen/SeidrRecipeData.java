@@ -54,9 +54,9 @@ public class SeidrRecipeData extends RecipeProvider {
         Item item = Items.DIAMOND;
 
         if(tablet.getDescriptionId().contains("damaged")) {
-            item = Items.GOLD_INGOT;
-        }else if(tablet.getDescriptionId().contains("incomplete")) {
             item = Items.EMERALD;
+        }else if(tablet.getDescriptionId().contains("incomplete")) {
+            item = Items.GOLD_INGOT;
         }
 
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, tablet, 2)

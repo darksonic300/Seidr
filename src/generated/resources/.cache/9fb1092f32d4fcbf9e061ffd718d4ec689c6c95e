@@ -1,4 +1,4 @@
-// 1.21	2024-07-26T16:19:57.0801134	Recipes
+// 1.21	2024-07-26T16:43:19.4507505	Recipes
 ad1a46a4de132ef31bc47f8436cddbf827c51cbb data/seidr/advancement/recipes/misc/item.seidr.complete_resistance_scroll.json
 ef2102df661efd99e7549e7e49e9615d53affb9d data/seidr/advancement/recipes/misc/item.seidr.complete_resistance_tablet.json
 e6152c6a2f496aeee9c2c74a505b90ea60730efe data/seidr/advancement/recipes/misc/item.seidr.complete_undead_scroll.json
@@ -13,6 +13,8 @@ b5f53f6da6c315337c2940d7644166903b1f3f0b data/seidr/advancement/recipes/misc/ite
 1f2b75a51aa6fcb7698c8604634c0ebe6de83a97 data/seidr/advancement/recipes/misc/item.seidr.incomplete_resistance_tablet.json
 3f5c83208af5f21395d8a9bbcdd8123cb16ee74d data/seidr/advancement/recipes/misc/item.seidr.incomplete_undead_scroll.json
 62c25822341f3912d8173bd1ad8eea3c8283d36a data/seidr/advancement/recipes/misc/item.seidr.incomplete_undead_tablet.json
+000a9830864516f2e492f40cdca06f59b7080bbd data/seidr/advancement/recipes/misc/item.seidr.sound_blast_scroll.json
+4b662856a735bbe6ce86a0e654e15d812862b2a1 data/seidr/advancement/recipes/misc/item.seidr.sound_blast_tablet.json
 969dc1fdd510bd060ce18865811ba565ac3d9fb8 data/seidr/recipe/item.seidr.complete_resistance_scroll.json
 ed881c79a8007935f38606be0d70b853c89435ef data/seidr/recipe/item.seidr.complete_resistance_tablet.json
 b8e4ae27e4aed28927df48c926103c68c84bb063 data/seidr/recipe/item.seidr.complete_undead_scroll.json
@@ -27,3 +29,5 @@ c195ce4c4df66f402bcafe831429049125c71bf0 data/seidr/recipe/item.seidr.effect_rem
 5e5e6015ad01043b673688b8b9aff76d2c248682 data/seidr/recipe/item.seidr.incomplete_resistance_tablet.json
 b029f220785723dab4ae4ddcb331db7f00d2182c data/seidr/recipe/item.seidr.incomplete_undead_scroll.json
 87cbca8aef8ef34137a27e860d3a4dfabfecb21c data/seidr/recipe/item.seidr.incomplete_undead_tablet.json
+4b70e5efda3c8e454e401f6e33bb089e14a99713 data/seidr/recipe/item.seidr.sound_blast_scroll.json
+eb4842c16a69ee430344920baa577f01fa3410ec data/seidr/recipe/item.seidr.sound_blast_tablet.json

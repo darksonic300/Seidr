@@ -2,6 +2,7 @@ package razordevs.seidr.event;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
@@ -17,6 +18,7 @@ public class SeidrEvents {
         bus.addListener(SeidrEvents::checkForUndeadScroll);
         bus.addListener(SeidrEvents::checkForClearEffectScroll);
         bus.addListener(SeidrEvents::checkForResistanceScroll);
+        bus.addListener(SeidrEvents::checkForSoundBlastScroll);
     }
 
 
@@ -24,6 +26,18 @@ public class SeidrEvents {
         if(event.getDuration() == 0) {
             if (event.getItem().is(SeidrScrollItems.EFFECT_REMOVE_SCROLL.get()))
                 event.getEntity().removeAllEffects();
+        }
+    }
+
+    public static void checkForSoundBlastScroll(LivingEntityUseItemEvent event) {
+        if(event.getDuration() == SeidrScrollItems.SOUND_BLAST_SCROLL.get().getUseDuration(event.getItem(), event.getEntity()) / 4) {
+            event.getEntity().playSound(SoundEvents.WARDEN_SONIC_CHARGE, 0.5F, 1.0F);
+        }
+
+        if(event.getDuration() == 0) {
+            if (event.getItem().is(SeidrScrollItems.SOUND_BLAST_SCROLL.get())){
+                event.getEntity().playSound(SoundEvents.WARDEN_SONIC_BOOM, 0.5F, 1.0F);
+            }
         }
     }
 

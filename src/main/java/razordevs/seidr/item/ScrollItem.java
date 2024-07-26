@@ -1,9 +1,7 @@
 package razordevs.seidr.item;
 
 import net.minecraft.core.particles.ParticleOptions;
-import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
@@ -16,7 +14,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ItemUtils;
 import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.NoteBlock;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import razordevs.seidr.client.SeidrSoundEvents;
 import razordevs.seidr.particle.SeidrParticleTypes;
@@ -104,7 +101,6 @@ public class ScrollItem extends Item {
     public boolean isInUse() {
         return currentlyUsing;
     }
-
 
     @Override
     public int getUseDuration(ItemStack pStack, LivingEntity livingEntity) {
