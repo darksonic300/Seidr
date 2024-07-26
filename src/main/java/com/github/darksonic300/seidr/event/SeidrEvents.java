@@ -2,6 +2,7 @@ package com.github.darksonic300.seidr.event;
 
 import com.github.darksonic300.seidr.entity.Draugr;
 import com.github.darksonic300.seidr.entity.SeidrEntityTypes;
+import com.github.darksonic300.seidr.entity.projectile.SoundBoomProjectile;
 import com.github.darksonic300.seidr.item.SeidrScrollItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
@@ -10,6 +11,7 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.Vec3;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.event.entity.living.LivingEntityUseItemEvent;
 
@@ -36,6 +38,9 @@ public class SeidrEvents {
             }
 
             if (event.getDuration() == 0) {
+                SoundBoomProjectile projectile = new SoundBoomProjectile(event.getEntity().level(), event.getEntity(), 0f,0f,0f);
+                projectile.shootFromRotation(event.getEntity(), event.getEntity().getXRot(), event.getEntity().getYRot(), 0.0F, 10.0F, 0.0F);
+                event.getEntity().level().addFreshEntity(projectile);
                 event.getEntity().playSound(SoundEvents.WARDEN_SONIC_BOOM, 0.5F, 1.0F);
             }
         }

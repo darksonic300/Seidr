@@ -7,5 +7,6 @@ public class SeidrRenderers {
 
     public static void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
         event.registerEntityRenderer(SeidrEntityTypes.DRAUGR.get(), DraugrRenderer::new);
+        event.registerEntityRenderer(SeidrEntityTypes.SONIC_BOOM_PROJECTILE.get(), SoundBoomProjectileRenderer::new);
     }
 }
