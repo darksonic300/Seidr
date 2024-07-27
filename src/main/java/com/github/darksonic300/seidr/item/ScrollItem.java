@@ -8,6 +8,7 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -34,7 +35,7 @@ public class ScrollItem extends Item {
     public ItemStack finishUsingItem(ItemStack pStack, Level pLevel, LivingEntity pLivingEntity) {
         if(pLivingEntity instanceof Player player)
             player.getCooldowns().addCooldown(this, cooldown);
-
+        // Decrease durability here
         pLevel.addParticle(SeidrParticleTypes.WAVE_PARTICLE.get(), pLivingEntity.getX(), pLivingEntity.getY(), pLivingEntity.getZ(), 0.0D, 0.0D, 0.0D);
         return pStack;
     }
@@ -75,6 +76,9 @@ public class ScrollItem extends Item {
 
         // Plays random sound for melody simulation
         if (pRemainingUseDuration % 13 == 0) {
+            if(pLivingEntity instanceof Mob mob)
+                mob.playAmbientSound();
+            else {
                 DeferredHolder<SoundEvent, SoundEvent> soundEvent = switch (random.nextInt(3)) {
                     case 0 -> SeidrSoundEvents.ITEM_SCROLL_LOW;
                     case 1 -> SeidrSoundEvents.ITEM_SCROLL_MEDIUM;
@@ -91,6 +95,7 @@ public class ScrollItem extends Item {
                         0.8F,
                         1.0F
                 );
+            }
         }
     }
 

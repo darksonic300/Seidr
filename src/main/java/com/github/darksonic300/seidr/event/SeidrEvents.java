@@ -1,5 +1,6 @@
 package com.github.darksonic300.seidr.event;
 
+import com.github.darksonic300.seidr.effect.SeidrEffects;
 import com.github.darksonic300.seidr.entity.Draugr;
 import com.github.darksonic300.seidr.entity.SeidrEntityTypes;
 import com.github.darksonic300.seidr.entity.projectile.SoundBoomProjectile;
@@ -11,9 +12,12 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.event.entity.living.LivingEntityUseItemEvent;
+import net.neoforged.neoforge.event.entity.living.MobEffectEvent;
 
 public class SeidrEvents {
     public static void listen(IEventBus bus) {
@@ -21,6 +25,10 @@ public class SeidrEvents {
         bus.addListener(SeidrEvents::checkForClearEffectScroll);
         bus.addListener(SeidrEvents::checkForResistanceScroll);
         bus.addListener(SeidrEvents::checkForSoundBlastScroll);
+        bus.addListener(SeidrEvents::checkForWalkingScroll);
+        bus.addListener(SeidrEvents::checkForFireballScroll);
+
+        bus.addListener(SeidrEvents::liquidWalkEffect);
     }
 
 
@@ -40,8 +48,12 @@ public class SeidrEvents {
             if (event.getDuration() == 0) {
                 SoundBoomProjectile projectile = new SoundBoomProjectile(event.getEntity().level(), event.getEntity(), 10f,10f,10f);
                 projectile.moveTo(event.getEntity().getX(), event.getEntity().getY() + 1.8, event.getEntity().getZ(), 0, 0);
+
                 projectile.shootFromRotation(event.getEntity(), event.getEntity().getXRot(), event.getEntity().getYRot(), 0.0F, 10.0F, 0.0F);
+
                 event.getEntity().level().addFreshEntity(projectile);
+
+                // TODO: Relay sound effect to projectile
                 event.getEntity().playSound(SoundEvents.WARDEN_SONIC_BOOM, 0.5F, 1.0F);
             }
         }
@@ -60,6 +72,15 @@ public class SeidrEvents {
         }
     }
 
+    public static void checkForFireballScroll(LivingEntityUseItemEvent event) {
+        if(event.getDuration() == 0) {
+            LivingEntity entity = event.getEntity();
+            if (event.getItem().is(SeidrScrollItems.INCOMPLETE_RESISTANCE_SCROLL.get())) {
+
+            }
+        }
+    }
+
     public static void checkForUndeadScroll(LivingEntityUseItemEvent event) {
         if(event.getDuration() == 0) {
             Level level = event.getEntity().level();
@@ -69,6 +90,28 @@ public class SeidrEvents {
                 summonZombie(level, event.getEntity(), 2);
             } else if (event.getItem().is(SeidrScrollItems.COMPLETE_UNDEAD_SCROLL.get())) {
                 summonZombie(level, event.getEntity(), 3);
+            }
+        }
+    }
+
+    public static void checkForWalkingScroll(LivingEntityUseItemEvent event) {
+        if(event.getDuration() == 0) {
+            LivingEntity entity = event.getEntity();
+            if (event.getItem().is(SeidrScrollItems.DAMAGED_WALKING_SCROLL.get())) {
+                entity.addEffect(new MobEffectInstance(SeidrEffects.LIQUID_WALK, 200, 0));
+            } else if (event.getItem().is(SeidrScrollItems.COMPLETE_WALKING_SCROLL.get())) {
+                entity.addEffect(new MobEffectInstance(SeidrEffects.LIQUID_WALK, 200, 1));
+            }
+        }
+    }
+
+    public static void liquidWalkEffect(MobEffectEvent event) {
+        if(event.getEffectInstance().is(SeidrEffects.LIQUID_WALK)) {
+            LivingEntity entity = event.getEntity();
+            BlockState state = entity.level().getBlockState(entity.getOnPos());
+            int amplifier = event.getEffectInstance().getAmplifier();
+            if((state.is(Blocks.WATER) && amplifier == 0) || (state.liquid() && amplifier == 1)){
+                entity.setPosRaw(entity.getX(), entity.getY() + 1, entity.getZ());
             }
         }
     }
