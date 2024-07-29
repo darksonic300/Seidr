@@ -6,6 +6,7 @@ import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
@@ -14,6 +15,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ItemUtils;
 import net.minecraft.world.item.UseAnim;
+import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import com.github.darksonic300.seidr.client.SeidrSoundEvents;
@@ -33,10 +35,10 @@ public class ScrollItem extends Item {
 
     @Override
     public ItemStack finishUsingItem(ItemStack pStack, Level pLevel, LivingEntity pLivingEntity) {
-        if(pLivingEntity instanceof Player player)
+        if (pLivingEntity instanceof Player player)
             player.getCooldowns().addCooldown(this, cooldown);
         // Decrease durability here
-        pLevel.addParticle(SeidrParticleTypes.WAVE_PARTICLE.get(), pLivingEntity.getX(), pLivingEntity.getY(), pLivingEntity.getZ(), 0.0D, 0.0D, 0.0D);
+        pLevel.addParticle(SeidrParticleTypes.WAVE_PARTICLE.get(), pLivingEntity.getX(), pLivingEntity.getY() + 0.05, pLivingEntity.getZ(), 0.0D, 0.0D, 0.0D);
         return pStack;
     }
 
@@ -57,19 +59,8 @@ public class ScrollItem extends Item {
 
         // Random particles for Client
         if(pLevel.isClientSide) {
-            if (pRemainingUseDuration % 3 == 0) {
-                if(random.nextBoolean())
-                    pLevel.addParticle(SeidrParticleTypes.NORSE_PARTICLE.get(), pLivingEntity.getX() + random.nextFloat(), pLivingEntity.getY() + 1.3 + random.nextFloat(), pLivingEntity.getZ() + random.nextFloat(), 0, 0, 0);
-                else
-                    pLevel.addParticle(SeidrParticleTypes.NORSE_PARTICLE.get(), pLivingEntity.getX() + random.nextFloat(), pLivingEntity.getY() + 1.3 + random.nextFloat(), pLivingEntity.getZ() - random.nextFloat(), 0, 0, 0);
-            }
-
             if (pRemainingUseDuration % 5 == 0) {
-                if(random.nextBoolean())
-                    pLevel.addParticle(SeidrParticleTypes.NORSE_PARTICLE.get(), pLivingEntity.getX() - random.nextFloat(), pLivingEntity.getY() + 1.3 + random.nextFloat(), pLivingEntity.getZ() + random.nextFloat(), 0, 0, 0);
-                else
-                    pLevel.addParticle(SeidrParticleTypes.NORSE_PARTICLE.get(), pLivingEntity.getX() - random.nextFloat(), pLivingEntity.getY() + 1.3 + random.nextFloat(), pLivingEntity.getZ() - random.nextFloat(), 0, 0, 0);
-
+                particleCircle(pLevel, pLivingEntity, SeidrParticleTypes.NORSE_PARTICLE.get());
                 pLevel.addParticle(ParticleTypes.NOTE, pLivingEntity.getX() + (0.5 - random.nextFloat()), pLivingEntity.getY() + 2.1, pLivingEntity.getZ() + (0.5 - random.nextFloat()), 0, 0, 0);
             }
         }
@@ -122,7 +113,10 @@ public class ScrollItem extends Item {
         return true;
     }
 
-    private static ParticleOptions randomParticle(RandomSource random){
-        return random.nextInt(3) == 0 ? ParticleTypes.NOTE : SeidrParticleTypes.NORSE_PARTICLE.get();
+    private static void particleCircle(Level pLevel, LivingEntity pLivingEntity, ParticleOptions particle){
+        pLevel.addParticle(particle, pLivingEntity.getX() + 1, pLivingEntity.getY() + 1, pLivingEntity.getZ(), 0f, 0f, 0f);
+        pLevel.addParticle(particle, pLivingEntity.getX() - 1, pLivingEntity.getY() + 1, pLivingEntity.getZ(), 0f, 0f, 0f);
+        pLevel.addParticle(particle, pLivingEntity.getX(), pLivingEntity.getY() + 1, pLivingEntity.getZ() + 1, 0f, 0f, 0f);
+        pLevel.addParticle(particle, pLivingEntity.getX(), pLivingEntity.getY() + 1, pLivingEntity.getZ() - 1, 0f, 0f, 0f);
     }
 }

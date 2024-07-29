@@ -5,6 +5,7 @@ import com.github.darksonic300.seidr.entity.Draugr;
 import com.github.darksonic300.seidr.entity.SeidrEntityTypes;
 import com.github.darksonic300.seidr.entity.projectile.SoundBoomProjectile;
 import com.github.darksonic300.seidr.item.SeidrScrollItems;
+import com.github.darksonic300.seidr.particle.SeidrParticleTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundEvents;
@@ -120,7 +121,7 @@ public class SeidrEvents {
             draugr.moveTo(pos, entity.getYRot(), entity.getXRot());
             draugr.setOwnerUUID(entity.getUUID());
             level.addFreshEntity(draugr);
-            level.addParticle(ParticleTypes.EXPLOSION, draugr.getX(), draugr.getY() + 0.5, draugr.getZ(), 0.0f, 0.0f, 0.0f);
+            level.addParticle(SeidrParticleTypes.WAVE_PARTICLE.get(), draugr.getX(), draugr.getY() + 0.05, draugr.getZ(), 0.0D, 0.0D, 0.0D);
         }
     }
 
