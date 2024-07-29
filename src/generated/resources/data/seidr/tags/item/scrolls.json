@@ -7,6 +7,9 @@
     "seidr:incomplete_resistance_scroll",
     "seidr:damaged_resistance_scroll",
     "seidr:complete_resistance_scroll",
-    "seidr:sound_blast_scroll"
+    "seidr:fireball_scroll",
+    "seidr:sound_blast_scroll",
+    "seidr:damaged_walking_scroll",
+    "seidr:complete_walking_scroll"
   ]
 }

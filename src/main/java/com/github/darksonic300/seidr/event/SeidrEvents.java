@@ -11,12 +11,14 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.projectile.Fireball;
+import net.minecraft.world.entity.projectile.SmallFireball;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.Vec3;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.event.entity.living.LivingEntityUseItemEvent;
+import net.neoforged.neoforge.event.entity.living.LivingEvent;
 import net.neoforged.neoforge.event.entity.living.MobEffectEvent;
 
 public class SeidrEvents {
@@ -27,8 +29,6 @@ public class SeidrEvents {
         bus.addListener(SeidrEvents::checkForSoundBlastScroll);
         bus.addListener(SeidrEvents::checkForWalkingScroll);
         bus.addListener(SeidrEvents::checkForFireballScroll);
-
-        bus.addListener(SeidrEvents::liquidWalkEffect);
     }
 
 
@@ -47,7 +47,7 @@ public class SeidrEvents {
 
             if (event.getDuration() == 0) {
                 SoundBoomProjectile projectile = new SoundBoomProjectile(event.getEntity().level(), event.getEntity(), 10f,10f,10f);
-                projectile.moveTo(event.getEntity().getX(), event.getEntity().getY() + 1.8, event.getEntity().getZ(), 0, 0);
+                projectile.moveTo(event.getEntity().getX(), event.getEntity().getEyeHeight(), event.getEntity().getZ(), 0, 0);
 
                 projectile.shootFromRotation(event.getEntity(), event.getEntity().getXRot(), event.getEntity().getYRot(), 0.0F, 10.0F, 0.0F);
 
@@ -75,8 +75,12 @@ public class SeidrEvents {
     public static void checkForFireballScroll(LivingEntityUseItemEvent event) {
         if(event.getDuration() == 0) {
             LivingEntity entity = event.getEntity();
-            if (event.getItem().is(SeidrScrollItems.INCOMPLETE_RESISTANCE_SCROLL.get())) {
+            if (event.getItem().is(SeidrScrollItems.FIREBALL_SCROLL.get())) {
+                SmallFireball projectile = new SmallFireball(event.getEntity().level(), 5f,5f,5f, entity.getDeltaMovement());
 
+                projectile.moveTo(event.getEntity().getX(), event.getEntity().getEyeHeight(), event.getEntity().getZ(), 0, 0);
+                projectile.shootFromRotation(event.getEntity(), event.getEntity().getXRot(), event.getEntity().getYRot(), 0.0F, 5.0F, 0.0F);
+                event.getEntity().level().addFreshEntity(projectile);
             }
         }
     }
@@ -98,20 +102,9 @@ public class SeidrEvents {
         if(event.getDuration() == 0) {
             LivingEntity entity = event.getEntity();
             if (event.getItem().is(SeidrScrollItems.DAMAGED_WALKING_SCROLL.get())) {
-                entity.addEffect(new MobEffectInstance(SeidrEffects.LIQUID_WALK, 200, 0));
+                entity.addEffect(new MobEffectInstance(SeidrEffects.LIQUID_WALK, 300, 0));
             } else if (event.getItem().is(SeidrScrollItems.COMPLETE_WALKING_SCROLL.get())) {
-                entity.addEffect(new MobEffectInstance(SeidrEffects.LIQUID_WALK, 200, 1));
-            }
-        }
-    }
-
-    public static void liquidWalkEffect(MobEffectEvent event) {
-        if(event.getEffectInstance().is(SeidrEffects.LIQUID_WALK)) {
-            LivingEntity entity = event.getEntity();
-            BlockState state = entity.level().getBlockState(entity.getOnPos());
-            int amplifier = event.getEffectInstance().getAmplifier();
-            if((state.is(Blocks.WATER) && amplifier == 0) || (state.liquid() && amplifier == 1)){
-                entity.setPosRaw(entity.getX(), entity.getY() + 1, entity.getZ());
+                entity.addEffect(new MobEffectInstance(SeidrEffects.LIQUID_WALK, 600, 0));
             }
         }
     }
@@ -127,7 +120,7 @@ public class SeidrEvents {
             draugr.moveTo(pos, entity.getYRot(), entity.getXRot());
             draugr.setOwnerUUID(entity.getUUID());
             level.addFreshEntity(draugr);
-            level.addParticle(ParticleTypes.ENCHANT, draugr.getX(), draugr.getY() + 2, draugr.getZ(), 0.0f, 0.5f, 0.0f);
+            level.addParticle(ParticleTypes.EXPLOSION, draugr.getX(), draugr.getY() + 0.5, draugr.getZ(), 0.0f, 0.0f, 0.0f);
         }
     }
 

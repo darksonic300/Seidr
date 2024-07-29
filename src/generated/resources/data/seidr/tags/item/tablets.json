@@ -7,6 +7,9 @@
     "seidr:incomplete_resistance_tablet",
     "seidr:damaged_resistance_tablet",
     "seidr:complete_resistance_tablet",
-    "seidr:sound_blast_tablet"
+    "seidr:fireball_tablet",
+    "seidr:sound_blast_tablet",
+    "seidr:damaged_walking_tablet",
+    "seidr:complete_walking_tablet"
   ]
 }

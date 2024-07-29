@@ -31,17 +31,18 @@ public class SeidrScrollItems {
     public static final DeferredRegister.Items SCROLL_ITEMS = DeferredRegister.createItems(Seidr.MODID);
     public static final DeferredRegister.Items TABLET_ITEMS = DeferredRegister.createItems(Seidr.MODID);
 
-    public static final DeferredItem<ScrollItem> INCOMPLETE_UNDEAD_SCROLL = registerScroll("incomplete_undead", 60, DUR_SHORT);
-    public static final DeferredItem<ScrollItem> DAMAGED_UNDEAD_SCROLL = registerScroll("damaged_undead", 70, DUR_MEDIUM_SHORT);
-    public static final DeferredItem<ScrollItem> COMPLETE_UNDEAD_SCROLL = registerScroll("complete_undead", 90, DUR_MEDIUM_LONG);
+    public static final DeferredItem<ScrollItem> INCOMPLETE_UNDEAD_SCROLL = registerScroll("incomplete_undead", CD_SHORT, DUR_SHORT);
+    public static final DeferredItem<ScrollItem> DAMAGED_UNDEAD_SCROLL = registerScroll("damaged_undead", CD_SHORT, DUR_MEDIUM_SHORT);
+    public static final DeferredItem<ScrollItem> COMPLETE_UNDEAD_SCROLL = registerScroll("complete_undead", CD_SHORT, DUR_MEDIUM_LONG);
 
-    public static final DeferredItem<ScrollItem> EFFECT_REMOVE_SCROLL = registerScroll("effect_remove", 70, DUR_LONG);
+    public static final DeferredItem<ScrollItem> EFFECT_REMOVE_SCROLL = registerScroll("effect_remove", CD_SHORT, DUR_LONG);
 
-    public static final DeferredItem<ScrollItem> INCOMPLETE_RESISTANCE_SCROLL = registerScroll("incomplete_resistance", 150, DUR_SHORT);
-    public static final DeferredItem<ScrollItem> DAMAGED_RESISTANCE_SCROLL = registerScroll("damaged_resistance", 170, DUR_MEDIUM);
-    public static final DeferredItem<ScrollItem> COMPLETE_RESISTANCE_SCROLL = registerScroll("complete_resistance", 180, DUR_MEDIUM);
+    public static final DeferredItem<ScrollItem> INCOMPLETE_RESISTANCE_SCROLL = registerScroll("incomplete_resistance", CD_SHORT, DUR_SHORT);
+    public static final DeferredItem<ScrollItem> DAMAGED_RESISTANCE_SCROLL = registerScroll("damaged_resistance", CD_SHORT, DUR_MEDIUM);
+    public static final DeferredItem<ScrollItem> COMPLETE_RESISTANCE_SCROLL = registerScroll("complete_resistance", CD_SHORT, DUR_MEDIUM);
 
-    public static final DeferredItem<ScrollItem> SOUND_BLAST_SCROLL = registerScroll("sound_blast", 170, DUR_MEDIUM_LONG);
+    public static final DeferredItem<ScrollItem> FIREBALL_SCROLL = registerScroll("fireball", CD_MEDIUM, DUR_MEDIUM);
+    public static final DeferredItem<ScrollItem> SOUND_BLAST_SCROLL = registerScroll("sound_blast", CD_LONG, DUR_MEDIUM_LONG);
 
     public static final DeferredItem<ScrollItem> DAMAGED_WALKING_SCROLL = registerScroll("damaged_walking", CD_MEDIUM, DUR_MEDIUM_LONG);
     public static final DeferredItem<ScrollItem> COMPLETE_WALKING_SCROLL = registerScroll("complete_walking", CD_MEDIUM, DUR_MEDIUM_LONG);

@@ -1,14 +1,20 @@
-// 1.21	2024-07-26T16:43:19.4487564	Item Models: seidr
+// 1.21	2024-07-29T15:12:51.2980325	Item Models: seidr
 bb7698f6bef81df0a586e99819d1fd5f5013bae4 assets/seidr/models/item/complete_resistance_scroll.json
 10ddcf25540e1c306494daefdd7114cf38c82a74 assets/seidr/models/item/complete_resistance_tablet.json
 bb7698f6bef81df0a586e99819d1fd5f5013bae4 assets/seidr/models/item/complete_undead_scroll.json
 10ddcf25540e1c306494daefdd7114cf38c82a74 assets/seidr/models/item/complete_undead_tablet.json
+bb7698f6bef81df0a586e99819d1fd5f5013bae4 assets/seidr/models/item/complete_walking_scroll.json
+10ddcf25540e1c306494daefdd7114cf38c82a74 assets/seidr/models/item/complete_walking_tablet.json
 bb7698f6bef81df0a586e99819d1fd5f5013bae4 assets/seidr/models/item/damaged_resistance_scroll.json
 10ddcf25540e1c306494daefdd7114cf38c82a74 assets/seidr/models/item/damaged_resistance_tablet.json
 bb7698f6bef81df0a586e99819d1fd5f5013bae4 assets/seidr/models/item/damaged_undead_scroll.json
 10ddcf25540e1c306494daefdd7114cf38c82a74 assets/seidr/models/item/damaged_undead_tablet.json
+bb7698f6bef81df0a586e99819d1fd5f5013bae4 assets/seidr/models/item/damaged_walking_scroll.json
+10ddcf25540e1c306494daefdd7114cf38c82a74 assets/seidr/models/item/damaged_walking_tablet.json
 bb7698f6bef81df0a586e99819d1fd5f5013bae4 assets/seidr/models/item/effect_remove_scroll.json
 10ddcf25540e1c306494daefdd7114cf38c82a74 assets/seidr/models/item/effect_remove_tablet.json
+bb7698f6bef81df0a586e99819d1fd5f5013bae4 assets/seidr/models/item/fireball_scroll.json
+10ddcf25540e1c306494daefdd7114cf38c82a74 assets/seidr/models/item/fireball_tablet.json
 bb7698f6bef81df0a586e99819d1fd5f5013bae4 assets/seidr/models/item/incomplete_resistance_scroll.json
 10ddcf25540e1c306494daefdd7114cf38c82a74 assets/seidr/models/item/incomplete_resistance_tablet.json
 bb7698f6bef81df0a586e99819d1fd5f5013bae4 assets/seidr/models/item/incomplete_undead_scroll.json

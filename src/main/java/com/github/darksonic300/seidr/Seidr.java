@@ -6,6 +6,7 @@ import com.github.darksonic300.seidr.datagen.SeidrItemModelData;
 import com.github.darksonic300.seidr.datagen.SeidrRecipeData;
 import com.github.darksonic300.seidr.datagen.tags.SeidrBlockTagData;
 import com.github.darksonic300.seidr.datagen.tags.SeidrItemTagData;
+import com.github.darksonic300.seidr.effect.SeidrEffects;
 import com.github.darksonic300.seidr.entity.SeidrEntityTypes;
 import com.github.darksonic300.seidr.item.SeidrScrollItems;
 import com.github.darksonic300.seidr.particle.SeidrParticleTypes;
@@ -44,6 +45,7 @@ public class Seidr
         SeidrSoundEvents.SOUNDS.register(modEventBus);
         SeidrEntityTypes.ENTITY_TYPES.register(modEventBus);
         SeidrParticleTypes.PARTICLE_TYPES.register(modEventBus);
+        SeidrEffects.MOB_EFFECTS.register(modEventBus);
 
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
         this.eventSetup(modEventBus);
