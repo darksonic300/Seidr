@@ -2,6 +2,7 @@ package com.github.darksonic300.seidr.entity.goal;
 
 import com.github.darksonic300.seidr.entity.Draugr;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.entity.ai.navigation.FlyingPathNavigation;
 import net.minecraft.world.entity.ai.navigation.GroundPathNavigation;
@@ -12,7 +13,7 @@ import javax.annotation.Nullable;
 import java.util.EnumSet;
 
 public class FollowOwnerSummonGoal extends Goal {
-    private final Draugr entity;
+    private final PathfinderMob entity;
     @Nullable
     private LivingEntity owner;
     private final double speedModifier;
@@ -22,12 +23,13 @@ public class FollowOwnerSummonGoal extends Goal {
     private final float startDistance;
     private float oldWaterCost;
 
-    public FollowOwnerSummonGoal(Draugr draugr, double speed, float start, float stop) {
+    public FollowOwnerSummonGoal(PathfinderMob draugr, LivingEntity owner, double speed, float start, float stop) {
         this.entity = draugr;
         this.speedModifier = speed;
         this.navigation = draugr.getNavigation();
         this.startDistance = start;
         this.stopDistance = stop;
+        this.owner = owner;
         this.setFlags(EnumSet.of(Goal.Flag.MOVE, Goal.Flag.LOOK));
         if (!(draugr.getNavigation() instanceof GroundPathNavigation) && !(draugr.getNavigation() instanceof FlyingPathNavigation)) {
             throw new IllegalArgumentException("Unsupported mob type for FollowOwnerSummonGoal");
@@ -36,15 +38,11 @@ public class FollowOwnerSummonGoal extends Goal {
 
     @Override
     public boolean canUse() {
-        LivingEntity livingentity = this.entity.getOwner();
-        if (livingentity == null) {
+        if (owner == null) {
             return false;
-        } else if (this.entity.unableToMoveToOwner()) {
-            return false;
-        } else if (this.entity.distanceToSqr(livingentity) < (double)(this.startDistance * this.startDistance)) {
+        } else if (this.entity.distanceToSqr(owner) < (double)(this.startDistance * this.startDistance)) {
             return false;
         } else {
-            this.owner = livingentity;
             return true;
         }
     }
@@ -54,7 +52,7 @@ public class FollowOwnerSummonGoal extends Goal {
         if (this.navigation.isDone()) {
             return false;
         } else {
-            return this.entity.unableToMoveToOwner() ? false : !(this.entity.distanceToSqr(this.owner) <= (double)(this.stopDistance * this.stopDistance));
+            return !(this.entity.distanceToSqr(this.owner) <= (double)(this.stopDistance * this.stopDistance));
         }
     }
 

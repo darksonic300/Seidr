@@ -10,6 +10,7 @@
     "seidr:fireball_tablet",
     "seidr:sound_blast_tablet",
     "seidr:damaged_walking_tablet",
-    "seidr:complete_walking_tablet"
+    "seidr:complete_walking_tablet",
+    "seidr:attraction_tablet"
   ]
 }

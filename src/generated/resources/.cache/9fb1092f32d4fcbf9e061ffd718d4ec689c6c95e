@@ -1,4 +1,6 @@
-// 1.21	2024-07-29T15:12:51.3030194	Recipes
+// 1.21	2024-07-30T21:16:07.6622795	Recipes
+ec96ed3f32300954950ad53fd7b8f2fe484a277b data/seidr/advancement/recipes/misc/item.seidr.attraction_scroll.json
+59b6d154972dfc21b15be0c4ce5746cf1e916a5e data/seidr/advancement/recipes/misc/item.seidr.attraction_tablet.json
 ad1a46a4de132ef31bc47f8436cddbf827c51cbb data/seidr/advancement/recipes/misc/item.seidr.complete_resistance_scroll.json
 ef2102df661efd99e7549e7e49e9615d53affb9d data/seidr/advancement/recipes/misc/item.seidr.complete_resistance_tablet.json
 e6152c6a2f496aeee9c2c74a505b90ea60730efe data/seidr/advancement/recipes/misc/item.seidr.complete_undead_scroll.json
@@ -21,6 +23,8 @@ b5f53f6da6c315337c2940d7644166903b1f3f0b data/seidr/advancement/recipes/misc/ite
 62c25822341f3912d8173bd1ad8eea3c8283d36a data/seidr/advancement/recipes/misc/item.seidr.incomplete_undead_tablet.json
 000a9830864516f2e492f40cdca06f59b7080bbd data/seidr/advancement/recipes/misc/item.seidr.sound_blast_scroll.json
 4b662856a735bbe6ce86a0e654e15d812862b2a1 data/seidr/advancement/recipes/misc/item.seidr.sound_blast_tablet.json
+713e1fd28bc0ce806d0043b3e33fa86e67476531 data/seidr/recipe/item.seidr.attraction_scroll.json
+342835fcc001d439d6eafe4697d659046c243643 data/seidr/recipe/item.seidr.attraction_tablet.json
 969dc1fdd510bd060ce18865811ba565ac3d9fb8 data/seidr/recipe/item.seidr.complete_resistance_scroll.json
 ed881c79a8007935f38606be0d70b853c89435ef data/seidr/recipe/item.seidr.complete_resistance_tablet.json
 b8e4ae27e4aed28927df48c926103c68c84bb063 data/seidr/recipe/item.seidr.complete_undead_scroll.json
@@ -28,18 +32,18 @@ b8e4ae27e4aed28927df48c926103c68c84bb063 data/seidr/recipe/item.seidr.complete_u
 a8a7bb45a09c937dd5fcb4c62645eec4e488091f data/seidr/recipe/item.seidr.complete_walking_scroll.json
 7ffb20dcc837b93d9e3280c43aa610fa9eacc459 data/seidr/recipe/item.seidr.complete_walking_tablet.json
 7194fe4f02f3682d80b7561ede2a87533f8e6958 data/seidr/recipe/item.seidr.damaged_resistance_scroll.json
-d96cb71cebcae94ca288ce25a372c56868a18621 data/seidr/recipe/item.seidr.damaged_resistance_tablet.json
+9a1db3a7fc126e7cde168921f8a194e5faf016b4 data/seidr/recipe/item.seidr.damaged_resistance_tablet.json
 b53fa0757ba982c184133092d3115f2d7cf33f05 data/seidr/recipe/item.seidr.damaged_undead_scroll.json
-4326baf56ea6a3721e50738eeb232c57e9dfd2f9 data/seidr/recipe/item.seidr.damaged_undead_tablet.json
+a9d23e0d782b6671bb37e2e7a7c1d59745c7b545 data/seidr/recipe/item.seidr.damaged_undead_tablet.json
 f3653526c74732fe7eab6bfe52a32b26daed6f02 data/seidr/recipe/item.seidr.damaged_walking_scroll.json
-4f42b4dc357884bd71072c3e29012ff7fc9722fb data/seidr/recipe/item.seidr.damaged_walking_tablet.json
+b9b6583c9d99c08f5dcfbda3dcb8bc3343216aab data/seidr/recipe/item.seidr.damaged_walking_tablet.json
 d3858eed60c6072fe2393c8dcfd8dff56ff31445 data/seidr/recipe/item.seidr.effect_remove_scroll.json
 c195ce4c4df66f402bcafe831429049125c71bf0 data/seidr/recipe/item.seidr.effect_remove_tablet.json
 6ba35e142d6b0fc14e134bcca804acab555ccb33 data/seidr/recipe/item.seidr.fireball_scroll.json
 a772c9ac23bebeae6ed6695c920c35bad0728da3 data/seidr/recipe/item.seidr.fireball_tablet.json
 36f0c2cd4b339a2b4e3127b59b288efc9ee95880 data/seidr/recipe/item.seidr.incomplete_resistance_scroll.json
-f002fd8d994e96334fe244a05474f8661c548dfe data/seidr/recipe/item.seidr.incomplete_resistance_tablet.json
+e31a6e70d6c8f7cfbe1b06a2af345afc607172c8 data/seidr/recipe/item.seidr.incomplete_resistance_tablet.json
 b029f220785723dab4ae4ddcb331db7f00d2182c data/seidr/recipe/item.seidr.incomplete_undead_scroll.json
-9883cfba9cd4ff5a2d173bd83ab9dc413de078cf data/seidr/recipe/item.seidr.incomplete_undead_tablet.json
+166e5d76298f1ecb3320035fdb3629d38c3d3721 data/seidr/recipe/item.seidr.incomplete_undead_tablet.json
 4b70e5efda3c8e454e401f6e33bb089e14a99713 data/seidr/recipe/item.seidr.sound_blast_scroll.json
 eb4842c16a69ee430344920baa577f01fa3410ec data/seidr/recipe/item.seidr.sound_blast_tablet.json

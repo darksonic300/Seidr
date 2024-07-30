@@ -1,0 +1,12 @@
+{
+  "values": [
+    "seidr:damaged_resistance_tablet",
+    "seidr:damaged_undead_tablet",
+    "seidr:damaged_walking_tablet",
+    "seidr:effect_remove_tablet",
+    "seidr:damaged_resistance_scroll",
+    "seidr:damaged_undead_scroll",
+    "seidr:damaged_walking_scroll",
+    "seidr:effect_remove_scroll"
+  ]
+}

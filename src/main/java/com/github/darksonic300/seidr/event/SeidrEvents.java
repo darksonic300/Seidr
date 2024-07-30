@@ -3,15 +3,18 @@ package com.github.darksonic300.seidr.event;
 import com.github.darksonic300.seidr.effect.SeidrEffects;
 import com.github.darksonic300.seidr.entity.Draugr;
 import com.github.darksonic300.seidr.entity.SeidrEntityTypes;
+import com.github.darksonic300.seidr.entity.goal.FollowOwnerSummonGoal;
 import com.github.darksonic300.seidr.entity.projectile.SoundBoomProjectile;
 import com.github.darksonic300.seidr.item.SeidrScrollItems;
 import com.github.darksonic300.seidr.particle.SeidrParticleTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.projectile.Fireball;
 import net.minecraft.world.entity.projectile.SmallFireball;
 import net.minecraft.world.level.Level;
@@ -22,6 +25,8 @@ import net.neoforged.neoforge.event.entity.living.LivingEntityUseItemEvent;
 import net.neoforged.neoforge.event.entity.living.LivingEvent;
 import net.neoforged.neoforge.event.entity.living.MobEffectEvent;
 
+import java.util.List;
+
 public class SeidrEvents {
     public static void listen(IEventBus bus) {
         bus.addListener(SeidrEvents::checkForUndeadScroll);
@@ -30,6 +35,9 @@ public class SeidrEvents {
         bus.addListener(SeidrEvents::checkForSoundBlastScroll);
         bus.addListener(SeidrEvents::checkForWalkingScroll);
         bus.addListener(SeidrEvents::checkForFireballScroll);
+        bus.addListener(SeidrEvents::checkForAttractionScroll);
+
+        bus.addListener(SeidrEvents::removeAttraction);
     }
 
 
@@ -37,6 +45,15 @@ public class SeidrEvents {
         if(event.getDuration() == 0) {
             if (event.getItem().is(SeidrScrollItems.EFFECT_REMOVE_SCROLL.get()))
                 event.getEntity().removeAllEffects();
+        }
+    }
+
+    public static void checkForAttractionScroll(LivingEntityUseItemEvent event) {
+        if(event.getDuration() == 0) {
+            LivingEntity entity = event.getEntity();
+            if (event.getItem().is(SeidrScrollItems.ATTRACTION_SCROLL.get())) {
+                entity.addEffect(new MobEffectInstance(SeidrEffects.ATTRACTION, 300, 0));
+            }
         }
     }
 
@@ -110,6 +127,15 @@ public class SeidrEvents {
         }
     }
 
+    public static void removeAttraction(MobEffectEvent.Expired event){
+        List<? extends Animal> list = event.getEntity().level().getEntitiesOfClass(Animal.class, event.getEntity().getBoundingBox().inflate(15, 5, 15));
+        for (Animal animal : list) {
+            animal.goalSelector.removeGoal(new FollowOwnerSummonGoal(animal, event.getEntity(), 1.1f, 5.0f, 2.0f));
+            event.getEntity().sendSystemMessage(Component.literal(animal.goalSelector.getAvailableGoals().toString()));
+        }
+    }
+
+    // Utility Methods
     private static void summonZombie(Level level, LivingEntity entity, int number){
         for(int i = 0; i < number; i++){
             Draugr draugr = new Draugr(SeidrEntityTypes.DRAUGR.get(), level);

@@ -3,19 +3,19 @@
   "category": "misc",
   "key": {
     "D": {
-      "item": "minecraft:diamond"
+      "item": "minecraft:paper"
     },
     "T": {
-      "item": "seidr:damaged_resistance_tablet"
+      "item": "seidr:attraction_tablet"
     }
   },
   "pattern": [
+    "DDD",
     "DTD",
-    "D D",
     "DDD"
   ],
   "result": {
-    "count": 2,
-    "id": "seidr:damaged_resistance_tablet"
+    "count": 1,
+    "id": "seidr:attraction_scroll"
   }
 }

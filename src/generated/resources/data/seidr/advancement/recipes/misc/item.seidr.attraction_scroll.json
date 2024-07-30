@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_attraction_scroll": {
+      "conditions": {
+        "items": [
+          {
+            "items": "seidr:attraction_scroll"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "seidr:item.seidr.attraction_scroll"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_attraction_scroll"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "seidr:item.seidr.attraction_scroll"
+    ]
+  }
+}

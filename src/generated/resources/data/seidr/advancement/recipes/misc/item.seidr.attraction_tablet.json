@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_attraction_tablet": {
+      "conditions": {
+        "items": [
+          {
+            "items": "seidr:attraction_tablet"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "seidr:item.seidr.attraction_tablet"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_attraction_tablet"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "seidr:item.seidr.attraction_tablet"
+    ]
+  }
+}

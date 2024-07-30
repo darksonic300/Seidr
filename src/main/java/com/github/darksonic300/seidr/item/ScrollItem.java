@@ -1,7 +1,9 @@
 package com.github.darksonic300.seidr.item;
 
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
@@ -11,26 +13,58 @@ import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.ItemUtils;
-import net.minecraft.world.item.UseAnim;
+import net.minecraft.world.item.*;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import com.github.darksonic300.seidr.client.SeidrSoundEvents;
 import com.github.darksonic300.seidr.particle.SeidrParticleTypes;
 
+import java.util.List;
+
 public class ScrollItem extends Item {
     private int cooldown;
     private int duration;
     private boolean currentlyUsing;
+    private String name;
+    private String norse;
 
-    public ScrollItem(Properties pProperties, int cooldown, int duration) {
+    public ScrollItem(Properties pProperties, String name, int cooldown, int duration, String norse) {
         super(pProperties);
         this.cooldown = cooldown;
         this.duration = duration;
         this.currentlyUsing = false;
+        this.name = name;
+        this.norse = norse;
+    }
+
+    @Override
+    public void appendHoverText(ItemStack pStack, TooltipContext pContext, List<Component> pTooltipComponents, TooltipFlag pTooltipFlag) {
+        pTooltipComponents.add(Component.literal(norse).withStyle(ChatFormatting.GOLD));
+        pTooltipComponents.add(Component.translatable("tooltip.item.seidr." + name + "_scroll.description").withStyle(ChatFormatting.GRAY));
+    }
+
+    public int getCooldown() {
+        return cooldown;
+    }
+
+    public boolean isInUse() {
+        return currentlyUsing;
+    }
+
+    @Override
+    public int getUseDuration(ItemStack pStack, LivingEntity livingEntity) {
+        return duration;
+    }
+
+    @Override
+    public UseAnim getUseAnimation(ItemStack pStack) {
+        return UseAnim.NONE;
+    }
+
+    @Override
+    public boolean isFoil(ItemStack pStack) {
+        return true;
     }
 
     @Override
@@ -88,29 +122,6 @@ public class ScrollItem extends Item {
                 );
             }
         }
-    }
-
-    public int getCooldown() {
-        return cooldown;
-    }
-
-    public boolean isInUse() {
-        return currentlyUsing;
-    }
-
-    @Override
-    public int getUseDuration(ItemStack pStack, LivingEntity livingEntity) {
-        return duration;
-    }
-
-    @Override
-    public UseAnim getUseAnimation(ItemStack pStack) {
-        return UseAnim.NONE;
-    }
-
-    @Override
-    public boolean isFoil(ItemStack pStack) {
-        return true;
     }
 
     private static void particleCircle(Level pLevel, LivingEntity pLivingEntity, ParticleOptions particle){

@@ -1,0 +1,12 @@
+{
+  "values": [
+    "seidr:complete_resistance_tablet",
+    "seidr:complete_undead_tablet",
+    "seidr:complete_walking_tablet",
+    "seidr:sound_blast_tablet",
+    "seidr:complete_resistance_scroll",
+    "seidr:complete_undead_scroll",
+    "seidr:complete_walking_scroll",
+    "seidr:sound_blast_scroll"
+  ]
+}

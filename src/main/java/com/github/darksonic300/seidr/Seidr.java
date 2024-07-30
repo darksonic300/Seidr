@@ -3,6 +3,7 @@ package com.github.darksonic300.seidr;
 import com.github.darksonic300.seidr.client.SeidrSoundEvents;
 import com.github.darksonic300.seidr.client.renderer.SeidrRenderers;
 import com.github.darksonic300.seidr.datagen.SeidrItemModelData;
+import com.github.darksonic300.seidr.datagen.SeidrLanguageData;
 import com.github.darksonic300.seidr.datagen.SeidrRecipeData;
 import com.github.darksonic300.seidr.datagen.tags.SeidrBlockTagData;
 import com.github.darksonic300.seidr.datagen.tags.SeidrItemTagData;
@@ -67,6 +68,7 @@ public class Seidr
 
         // Client Data
         generator.addProvider(event.includeClient(), new SeidrItemModelData(packOutput, fileHelper));
+        generator.addProvider(event.includeClient(), new SeidrLanguageData(packOutput));
 
         // Server Data
         generator.addProvider(event.includeServer(), new SeidrRecipeData(packOutput, lookupProvider));

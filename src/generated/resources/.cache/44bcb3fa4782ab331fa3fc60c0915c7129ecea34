@@ -1,3 +1,6 @@
-// 1.21	2024-07-29T15:12:51.2960381	Seidr Item Tags
-f91595dff36febdafad31f4f3ac8e9de2f76ca78 data/seidr/tags/item/scrolls.json
-a296baf7f2f39f47ff99cce4709c6c8f7293db4c data/seidr/tags/item/tablets.json
+// 1.21	2024-07-30T21:16:07.6328479	Seidr Item Tags
+05553d3ef55a23e177ed0ae309cfd4b5887b48a2 data/seidr/tags/item/complete_scrolls.json
+6eb852e9c6abcb4491bfa9aa7b5b88a31c87eb8a data/seidr/tags/item/damaged_scrolls.json
+dc9afc0c08d4b321c6d8b0d7925ca5963fe0d43f data/seidr/tags/item/incomplete_scrolls.json
+5a58946419b298a06815d1175f4042c5ee02ee79 data/seidr/tags/item/scrolls.json
+9981207e3bab5afc9e76db574d9011c01787b6a9 data/seidr/tags/item/tablets.json

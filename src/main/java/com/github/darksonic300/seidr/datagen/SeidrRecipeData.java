@@ -1,5 +1,6 @@
 package com.github.darksonic300.seidr.datagen;
 
+import com.github.darksonic300.seidr.datagen.tags.SeidrTags;
 import com.github.darksonic300.seidr.item.SeidrScrollItems;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
@@ -9,6 +10,7 @@ import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import com.github.darksonic300.seidr.Seidr;
@@ -49,10 +51,9 @@ public class SeidrRecipeData extends RecipeProvider {
 
     public void duplicate(Item tablet, RecipeOutput consumer) {
         Item item = Items.DIAMOND;
-
-        if(tablet.getDescriptionId().contains("damaged")) {
+        if(new ItemStack(tablet).is(SeidrTags.Items.DAMAGED_TABLETS)) {
             item = Items.EMERALD;
-        }else if(tablet.getDescriptionId().contains("incomplete")) {
+        } else if(new ItemStack(tablet).is(SeidrTags.Items.INCOMPLETE_TABLETS)) {
             item = Items.GOLD_INGOT;
         }
 

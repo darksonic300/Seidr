@@ -1,7 +1,5 @@
 package com.github.darksonic300.seidr.datagen.tags;
 
-import com.github.darksonic300.seidr.Seidr;
-import com.github.darksonic300.seidr.item.SeidrItems;
 import com.github.darksonic300.seidr.item.SeidrScrollItems;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
@@ -37,6 +35,48 @@ public class SeidrItemTagData extends ItemTagsProvider {
 
         for (DeferredHolder<Item, ? extends Item> item : tabletEntries)
             tabletTag.add(item.get());
+
+        this.tag(SeidrTags.Items.INCOMPLETE_TABLETS).add(
+                SeidrScrollItems.INCOMPLETE_RESISTANCE_TABLET.get(),
+                SeidrScrollItems.INCOMPLETE_UNDEAD_TABLET.get(),
+                SeidrScrollItems.FIREBALL_TABLET.get(),
+                SeidrScrollItems.ATTRACTION_TABLET.get()
+        );
+
+        this.tag(SeidrTags.Items.DAMAGED_TABLETS).add(
+                SeidrScrollItems.DAMAGED_RESISTANCE_TABLET.get(),
+                SeidrScrollItems.DAMAGED_UNDEAD_TABLET.get(),
+                SeidrScrollItems.DAMAGED_WALKING_TABLET.get(),
+                SeidrScrollItems.EFFECT_REMOVE_TABLET.get()
+                );
+
+        this.tag(SeidrTags.Items.COMPLETE_TABLETS).add(
+                SeidrScrollItems.COMPLETE_RESISTANCE_TABLET.get(),
+                SeidrScrollItems.COMPLETE_UNDEAD_TABLET.get(),
+                SeidrScrollItems.COMPLETE_WALKING_TABLET.get(),
+                SeidrScrollItems.SOUND_BLAST_TABLET.get()
+        );
+
+        this.tag(SeidrTags.Items.INCOMPLETE_SCROLLS).add(
+                SeidrScrollItems.INCOMPLETE_RESISTANCE_SCROLL.get(),
+                SeidrScrollItems.INCOMPLETE_UNDEAD_SCROLL.get(),
+                SeidrScrollItems.FIREBALL_SCROLL.get(),
+                SeidrScrollItems.ATTRACTION_SCROLL.get()
+        );
+
+        this.tag(SeidrTags.Items.DAMAGED_SCROLLS).add(
+                SeidrScrollItems.DAMAGED_RESISTANCE_SCROLL.get(),
+                SeidrScrollItems.DAMAGED_UNDEAD_SCROLL.get(),
+                SeidrScrollItems.DAMAGED_WALKING_SCROLL.get(),
+                SeidrScrollItems.EFFECT_REMOVE_SCROLL.get()
+        );
+
+        this.tag(SeidrTags.Items.COMPLETE_SCROLLS).add(
+                SeidrScrollItems.COMPLETE_RESISTANCE_SCROLL.get(),
+                SeidrScrollItems.COMPLETE_UNDEAD_SCROLL.get(),
+                SeidrScrollItems.COMPLETE_WALKING_SCROLL.get(),
+                SeidrScrollItems.SOUND_BLAST_SCROLL.get()
+        );
 
     }
 }

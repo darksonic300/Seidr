@@ -37,7 +37,7 @@ public class Draugr extends Zombie implements OwnableEntity {
 
     @Override
     protected void registerGoals() {
-        this.goalSelector.addGoal(1, new FollowOwnerSummonGoal(this, 1.0, 10.0F, 2.0F));
+        this.goalSelector.addGoal(1, new FollowOwnerSummonGoal(this, this.getOwner(), 1.1f, 10.0f, 2.0f));
         this.goalSelector.addGoal(2, new ZombieAttackGoal(this, 1.0, false));
         this.goalSelector.addGoal(7, new WaterAvoidingRandomStrollGoal(this, 1.0));
         this.targetSelector.addGoal(1, new OwnerSummonHurtByGoal(this));
