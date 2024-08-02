@@ -5,25 +5,19 @@ import com.github.darksonic300.seidr.entity.Draugr;
 import com.github.darksonic300.seidr.entity.SeidrEntityTypes;
 import com.github.darksonic300.seidr.entity.goal.FollowOwnerSummonGoal;
 import com.github.darksonic300.seidr.entity.projectile.SoundBoomProjectile;
-import com.github.darksonic300.seidr.item.SeidrScrollItems;
+import com.github.darksonic300.seidr.item.SeidrItems;
 import com.github.darksonic300.seidr.particle.SeidrParticleTypes;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.goal.WrappedGoal;
 import net.minecraft.world.entity.animal.Animal;
-import net.minecraft.world.entity.projectile.Fireball;
 import net.minecraft.world.entity.projectile.SmallFireball;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.event.entity.living.LivingEntityUseItemEvent;
-import net.neoforged.neoforge.event.entity.living.LivingEvent;
 import net.neoforged.neoforge.event.entity.living.MobEffectEvent;
 
 import java.util.List;
@@ -45,7 +39,7 @@ public class SeidrEvents {
 
     public static void checkForClearEffectScroll(LivingEntityUseItemEvent event) {
         if(event.getDuration() == 0) {
-            if (event.getItem().is(SeidrScrollItems.EFFECT_REMOVE_SCROLL.get()))
+            if (event.getItem().is(SeidrItems.EFFECT_REMOVE_SCROLL.get()))
                 event.getEntity().removeAllEffects();
         }
     }
@@ -53,23 +47,22 @@ public class SeidrEvents {
     public static void checkForAttractionScroll(LivingEntityUseItemEvent event) {
         if(event.getDuration() == 0) {
             LivingEntity entity = event.getEntity();
-            if (event.getItem().is(SeidrScrollItems.ATTRACTION_SCROLL.get())) {
+            if (event.getItem().is(SeidrItems.ATTRACTION_SCROLL.get())) {
                 entity.addEffect(new MobEffectInstance(SeidrEffects.ATTRACTION, 300, 0));
             }
         }
     }
 
     public static void checkForSoundBlastScroll(LivingEntityUseItemEvent event) {
-        if (event.getItem().is(SeidrScrollItems.SOUND_BLAST_SCROLL.get())) {
-            if (event.getDuration() == SeidrScrollItems.SOUND_BLAST_SCROLL.get().getUseDuration(event.getItem(), event.getEntity()) / 3) {
+        if (event.getItem().is(SeidrItems.SOUND_BLAST_SCROLL.get())) {
+            if (event.getDuration() == SeidrItems.SOUND_BLAST_SCROLL.get().getUseDuration(event.getItem(), event.getEntity()) / 3) {
                 event.getEntity().playSound(SoundEvents.WARDEN_SONIC_CHARGE, 0.5F, 1.0F);
             }
 
             if (event.getDuration() == 0) {
                 SoundBoomProjectile projectile = new SoundBoomProjectile(event.getEntity().level(), event.getEntity(), 10f,10f,10f);
-                projectile.moveTo(event.getEntity().getX(), event.getEntity().getEyeHeight(), event.getEntity().getZ(), 0, 0);
-
-                projectile.shootFromRotation(event.getEntity(), event.getEntity().getXRot(), event.getEntity().getYRot(), 0.0F, 10.0F, 0.0F);
+                projectile.moveTo(projectile.getX(), projectile.getY() + 0.5, projectile.getZ());
+                projectile.shootFromRotation(event.getEntity(), event.getEntity().getXRot(), event.getEntity().getYRot(), 0.0F, 8.0F, 0.0F);
 
                 event.getEntity().level().addFreshEntity(projectile);
 
@@ -82,11 +75,11 @@ public class SeidrEvents {
     public static void checkForResistanceScroll(LivingEntityUseItemEvent event) {
         if(event.getDuration() == 0) {
             LivingEntity entity = event.getEntity();
-            if (event.getItem().is(SeidrScrollItems.INCOMPLETE_RESISTANCE_SCROLL.get())) {
+            if (event.getItem().is(SeidrItems.INCOMPLETE_RESISTANCE_SCROLL.get())) {
                 entity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 200, 1));
-            } else if (event.getItem().is(SeidrScrollItems.DAMAGED_RESISTANCE_SCROLL.get())) {
+            } else if (event.getItem().is(SeidrItems.DAMAGED_RESISTANCE_SCROLL.get())) {
                 entity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 200, 2));
-            } else if (event.getItem().is(SeidrScrollItems.COMPLETE_RESISTANCE_SCROLL.get())) {
+            } else if (event.getItem().is(SeidrItems.COMPLETE_RESISTANCE_SCROLL.get())) {
                 entity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 200, 3));
             }
         }
@@ -95,7 +88,7 @@ public class SeidrEvents {
     public static void checkForFireballScroll(LivingEntityUseItemEvent event) {
         if(event.getDuration() == 0) {
             LivingEntity entity = event.getEntity();
-            if (event.getItem().is(SeidrScrollItems.FIREBALL_SCROLL.get())) {
+            if (event.getItem().is(SeidrItems.FIREBALL_SCROLL.get())) {
                 SmallFireball projectile = new SmallFireball(event.getEntity().level(), 5f,5f,5f, entity.getDeltaMovement());
 
                 projectile.moveTo(event.getEntity().getX(), event.getEntity().getEyeHeight(), event.getEntity().getZ(), 0, 0);
@@ -108,11 +101,11 @@ public class SeidrEvents {
     public static void checkForUndeadScroll(LivingEntityUseItemEvent event) {
         if(event.getDuration() == 0) {
             Level level = event.getEntity().level();
-            if (event.getItem().is(SeidrScrollItems.INCOMPLETE_UNDEAD_SCROLL.get())) {
+            if (event.getItem().is(SeidrItems.INCOMPLETE_UNDEAD_SCROLL.get())) {
                 summonZombie(level, event.getEntity(), 1);
-            } else if (event.getItem().is(SeidrScrollItems.DAMAGED_UNDEAD_SCROLL.get())) {
+            } else if (event.getItem().is(SeidrItems.DAMAGED_UNDEAD_SCROLL.get())) {
                 summonZombie(level, event.getEntity(), 2);
-            } else if (event.getItem().is(SeidrScrollItems.COMPLETE_UNDEAD_SCROLL.get())) {
+            } else if (event.getItem().is(SeidrItems.COMPLETE_UNDEAD_SCROLL.get())) {
                 summonZombie(level, event.getEntity(), 3);
             }
         }
@@ -121,9 +114,9 @@ public class SeidrEvents {
     public static void checkForWalkingScroll(LivingEntityUseItemEvent event) {
         if(event.getDuration() == 0) {
             LivingEntity entity = event.getEntity();
-            if (event.getItem().is(SeidrScrollItems.DAMAGED_WALKING_SCROLL.get())) {
+            if (event.getItem().is(SeidrItems.DAMAGED_WALKING_SCROLL.get())) {
                 entity.addEffect(new MobEffectInstance(SeidrEffects.LIQUID_WALK, 300, 0));
-            } else if (event.getItem().is(SeidrScrollItems.COMPLETE_WALKING_SCROLL.get())) {
+            } else if (event.getItem().is(SeidrItems.COMPLETE_WALKING_SCROLL.get())) {
                 entity.addEffect(new MobEffectInstance(SeidrEffects.LIQUID_WALK, 600, 0));
             }
         }

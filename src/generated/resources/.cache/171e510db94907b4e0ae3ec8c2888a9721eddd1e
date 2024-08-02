@@ -1,0 +1,4 @@
+// 1.21	2024-08-03T01:13:59.9045726	Global Loot Modifiers : seidr
+b96a1c0bdb959e665bcc5b47474394305d4ea5f3 data/neoforge/loot_modifiers/global_loot_modifiers.json
+1fdd6144e2cba6d5491dac4dbebdf706877e6643 data/seidr/loot_modifiers/mineshaft_loot_modifiers.json
+49f03a6c5409a669c4827452551f2e0db73e597a data/seidr/loot_modifiers/nether_loot_modifiers.json

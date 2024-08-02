@@ -1,7 +1,7 @@
 package com.github.darksonic300.seidr.datagen;
 
 import com.github.darksonic300.seidr.datagen.tags.SeidrTags;
-import com.github.darksonic300.seidr.item.SeidrScrollItems;
+import com.github.darksonic300.seidr.item.SeidrItems;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.RecipeCategory;
@@ -24,17 +24,17 @@ public class SeidrRecipeData extends RecipeProvider {
 
     @Override
     protected void buildRecipes(RecipeOutput consumer) {
-        for (DeferredHolder<Item, ? extends Item> item : SeidrScrollItems.SCROLL_ITEMS.getEntries()) {
+        for (DeferredHolder<Item, ? extends Item> item : SeidrItems.SCROLL_ITEMS.getEntries()) {
             scrollRecipe(item, consumer);
         }
-        for (DeferredHolder<Item, ? extends Item> item : SeidrScrollItems.TABLET_ITEMS.getEntries()) {
+        for (DeferredHolder<Item, ? extends Item> item : SeidrItems.TABLET_ITEMS.getEntries()) {
             duplicate(item.get(), consumer);
         }
     }
 
     public void scrollRecipe(DeferredHolder<Item, ? extends Item> scroll, RecipeOutput consumer) {
         Item ingredient = null;
-        for (DeferredHolder<Item, ? extends Item> item : SeidrScrollItems.TABLET_ITEMS.getEntries()) {
+        for (DeferredHolder<Item, ? extends Item> item : SeidrItems.TABLET_ITEMS.getEntries()) {
             if (scroll.getId().toLanguageKey().startsWith(item.getId().toLanguageKey().replaceFirst("_tablet", ""))) {
                 ingredient = item.get();
             }

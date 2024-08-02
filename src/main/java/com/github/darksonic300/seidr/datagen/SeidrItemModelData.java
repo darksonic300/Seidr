@@ -1,8 +1,6 @@
 package com.github.darksonic300.seidr.datagen;
 
-import com.github.darksonic300.seidr.datagen.tags.SeidrItemTagData;
-import com.github.darksonic300.seidr.datagen.tags.SeidrTags;
-import com.github.darksonic300.seidr.item.SeidrScrollItems;
+import com.github.darksonic300.seidr.item.SeidrItems;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
@@ -19,10 +17,10 @@ public class SeidrItemModelData extends ItemModelProvider {
 
     @Override
     protected void registerModels() {
-        for(DeferredHolder<Item, ? extends Item> item : SeidrScrollItems.SCROLL_ITEMS.getEntries())
+        for(DeferredHolder<Item, ? extends Item> item : SeidrItems.SCROLL_ITEMS.getEntries())
             this.scrollItem(item.get());
 
-        for(DeferredHolder<Item, ? extends Item> item : SeidrScrollItems.TABLET_ITEMS.getEntries())
+        for(DeferredHolder<Item, ? extends Item> item : SeidrItems.TABLET_ITEMS.getEntries())
             this.tabletItem(item.get());
     }
 

@@ -4,6 +4,7 @@ import com.github.darksonic300.seidr.entity.SeidrEntityTypes;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.util.Mth;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.AbstractHurtingProjectile;
@@ -48,13 +49,18 @@ public class SoundBoomProjectile extends AbstractHurtingProjectile {
             double d0 = this.getX() + vec3.x();
             double d1 = this.getY() + vec3.y();
             double d2 = this.getZ() + vec3.z();
-            ProjectileUtil.rotateTowardsMovement(this, 0.2F);
+            double d4 = vec3.horizontalDistance();
+            this.setYRot((float)(Mth.atan2(-vec3.x, -vec3.z) * 180.0F / (float)Math.PI));
+
+            this.setXRot((float)(Mth.atan2(vec3.y, d4) * 180.0F / (float)Math.PI));
+            this.setXRot(lerpRotation(this.xRotO, this.getXRot()));
+            this.setYRot(lerpRotation(this.yRotO, this.getYRot()));
             float f = this.getInertia();
 
-            this.setDeltaMovement(vec3.add(vec3.normalize().scale(this.accelerationPower)).scale((double)f));
+            this.setDeltaMovement(vec3.scale(f));
             ParticleOptions particleoptions = this.getTrailParticle();
             if (particleoptions != null) {
-                this.level().addParticle(particleoptions, d0, d1 + 0.5, d2, 0.0, 0.0, 0.0);
+                this.level().addParticle(particleoptions, d0, d1, d2, 0.0, 0.0, 0.0);
             }
 
             this.setPos(d0, d1, d2);

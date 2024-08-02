@@ -5,11 +5,13 @@ import com.github.darksonic300.seidr.client.renderer.SeidrRenderers;
 import com.github.darksonic300.seidr.datagen.SeidrItemModelData;
 import com.github.darksonic300.seidr.datagen.SeidrLanguageData;
 import com.github.darksonic300.seidr.datagen.SeidrRecipeData;
+import com.github.darksonic300.seidr.datagen.loot.modifiers.SeidrGlobalLootModifiers;
+import com.github.darksonic300.seidr.datagen.loot.modifiers.SeidrLootDataProvider;
 import com.github.darksonic300.seidr.datagen.tags.SeidrBlockTagData;
 import com.github.darksonic300.seidr.datagen.tags.SeidrItemTagData;
 import com.github.darksonic300.seidr.effect.SeidrEffects;
 import com.github.darksonic300.seidr.entity.SeidrEntityTypes;
-import com.github.darksonic300.seidr.item.SeidrScrollItems;
+import com.github.darksonic300.seidr.item.SeidrItems;
 import com.github.darksonic300.seidr.particle.SeidrParticleTypes;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
@@ -41,12 +43,13 @@ public class Seidr
     {
         modEventBus.addListener(this::dataSetup);
 
-        SeidrScrollItems.SCROLL_ITEMS.register(modEventBus);
-        SeidrScrollItems.TABLET_ITEMS.register(modEventBus);
+        SeidrItems.SCROLL_ITEMS.register(modEventBus);
+        SeidrItems.TABLET_ITEMS.register(modEventBus);
         SeidrSoundEvents.SOUNDS.register(modEventBus);
         SeidrEntityTypes.ENTITY_TYPES.register(modEventBus);
         SeidrParticleTypes.PARTICLE_TYPES.register(modEventBus);
         SeidrEffects.MOB_EFFECTS.register(modEventBus);
+        SeidrGlobalLootModifiers.LOOT_MODIFIERS.register(modEventBus);
 
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
         this.eventSetup(modEventBus);
@@ -75,5 +78,6 @@ public class Seidr
         SeidrBlockTagData blockTags = new SeidrBlockTagData(packOutput, lookupProvider, fileHelper);
         generator.addProvider(event.includeServer(), blockTags);
         generator.addProvider(event.includeServer(), new SeidrItemTagData(packOutput, lookupProvider, blockTags.contentsGetter()));
+        generator.addProvider(event.includeServer(), new SeidrLootDataProvider(packOutput, lookupProvider));
     }
 }

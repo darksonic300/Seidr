@@ -6,7 +6,7 @@ import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import com.github.darksonic300.seidr.Seidr;
 
-public class SeidrScrollItems {
+public class SeidrItems {
     // TODO: Define cooldown constants
     // TODO: Different durabilities
     // TODO: Compatibility Scrolls
@@ -75,6 +75,6 @@ public class SeidrScrollItems {
     }
 
     private static DeferredItem<Item> registerTablet(String name){
-        return TABLET_ITEMS.register(name + "_tablet", () -> new Item(new Item.Properties().stacksTo(16)));
+        return TABLET_ITEMS.register(name + "_tablet", () -> new Item(new Item.Properties().stacksTo(16).rarity(Rarity.UNCOMMON)));
     }
 }

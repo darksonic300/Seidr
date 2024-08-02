@@ -1,7 +1,7 @@
 package com.github.darksonic300.seidr.event;
 
 import com.github.darksonic300.seidr.item.ScrollItem;
-import com.github.darksonic300.seidr.item.SeidrScrollItems;
+import com.github.darksonic300.seidr.item.SeidrItems;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
@@ -21,7 +21,7 @@ public class SeidrClientModBusEvents {
     @SubscribeEvent
     public static void onClientSetup(FMLClientSetupEvent event) {
         event.enqueueWork(() -> { // ItemProperties#register is not threadsafe, so we need to call it on the main thread
-            for (DeferredHolder<Item, ? extends Item> item : SeidrScrollItems.SCROLL_ITEMS.getEntries())
+            for (DeferredHolder<Item, ? extends Item> item : SeidrItems.SCROLL_ITEMS.getEntries())
                 ItemProperties.register(
                         item.get(),
                         // The id of the property.

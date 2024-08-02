@@ -1,6 +1,6 @@
 package com.github.darksonic300.seidr;
 
-import com.github.darksonic300.seidr.item.SeidrScrollItems;
+import com.github.darksonic300.seidr.item.SeidrItems;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.*;
 import net.neoforged.api.distmarker.Dist;
@@ -16,9 +16,9 @@ public class SeidrTabs {
     public static void buildCreativeModeTabs(BuildCreativeModeTabContentsEvent event) {
         ResourceKey<CreativeModeTab> tab = event.getTabKey();
         if(tab == CreativeModeTabs.TOOLS_AND_UTILITIES) {
-            for (DeferredHolder<Item, ? extends Item> item : SeidrScrollItems.SCROLL_ITEMS.getEntries())
+            for (DeferredHolder<Item, ? extends Item> item : SeidrItems.SCROLL_ITEMS.getEntries())
                 event.accept(item.get());
-            for(DeferredHolder<Item, ? extends Item> item : SeidrScrollItems.TABLET_ITEMS.getEntries())
+            for(DeferredHolder<Item, ? extends Item> item : SeidrItems.TABLET_ITEMS.getEntries())
                 event.accept(item.get());
         }
     }

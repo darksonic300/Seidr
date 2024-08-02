@@ -1,0 +1,36 @@
+{
+  "type": "seidr:mineshaft_loot",
+  "chanceToSpawn": 0.8,
+  "conditions": [
+    {
+      "condition": "minecraft:any_of",
+      "terms": [
+        {
+          "condition": "neoforge:loot_table_id",
+          "loot_table_id": "minecraft:chests/abandoned_mineshaft"
+        },
+        {
+          "condition": "neoforge:loot_table_id",
+          "loot_table_id": "minecraft:chests/jungle_temple"
+        }
+      ]
+    }
+  ],
+  "items": [
+    {
+      "data": {
+        "count": 1,
+        "id": "seidr:incomplete_undead_tablet"
+      },
+      "weight": 70
+    },
+    {
+      "data": {
+        "count": 1,
+        "id": "seidr:effect_remove_tablet"
+      },
+      "weight": 30
+    }
+  ],
+  "totalWeight": 100
+}

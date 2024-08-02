@@ -1,0 +1,7 @@
+{
+  "entries": [
+    "seidr:mineshaft_loot_modifiers",
+    "seidr:nether_loot_modifiers"
+  ],
+  "replace": false
+}
