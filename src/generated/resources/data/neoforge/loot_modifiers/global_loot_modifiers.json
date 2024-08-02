@@ -1,7 +1,11 @@
 {
   "entries": [
     "seidr:mineshaft_loot_modifiers",
-    "seidr:nether_loot_modifiers"
+    "seidr:end_city_loot_modifiers",
+    "seidr:nether_loot_modifiers",
+    "seidr:ancient_city_loot_modifiers",
+    "seidr:sea_loot_modifiers",
+    "seidr:buried_treasure_loot_modifiers"
   ],
   "replace": false
 }

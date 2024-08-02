@@ -1,0 +1,20 @@
+{
+  "type": "seidr:ancient_city_loot",
+  "chanceToSpawn": 0.9,
+  "conditions": [
+    {
+      "condition": "neoforge:loot_table_id",
+      "loot_table_id": "minecraft:chests/buried_treasure"
+    }
+  ],
+  "items": [
+    {
+      "data": {
+        "count": 1,
+        "id": "seidr:complete_walking_tablet"
+      },
+      "weight": 100
+    }
+  ],
+  "totalWeight": 100
+}

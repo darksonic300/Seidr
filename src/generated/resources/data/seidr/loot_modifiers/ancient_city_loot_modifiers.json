@@ -1,0 +1,27 @@
+{
+  "type": "seidr:ancient_city_loot",
+  "chanceToSpawn": 0.9,
+  "conditions": [
+    {
+      "condition": "neoforge:loot_table_id",
+      "loot_table_id": "minecraft:chests/ancient_city"
+    }
+  ],
+  "items": [
+    {
+      "data": {
+        "count": 1,
+        "id": "seidr:sound_blast_tablet"
+      },
+      "weight": 30
+    },
+    {
+      "data": {
+        "count": 1,
+        "id": "seidr:complete_resistance_tablet"
+      },
+      "weight": 70
+    }
+  ],
+  "totalWeight": 100
+}

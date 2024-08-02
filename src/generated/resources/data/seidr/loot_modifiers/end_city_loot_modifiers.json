@@ -1,0 +1,27 @@
+{
+  "type": "seidr:ancient_city_loot",
+  "chanceToSpawn": 0.9,
+  "conditions": [
+    {
+      "condition": "neoforge:loot_table_id",
+      "loot_table_id": "minecraft:chests/end_city_treasure"
+    }
+  ],
+  "items": [
+    {
+      "data": {
+        "count": 1,
+        "id": "seidr:incomplete_resistance_tablet"
+      },
+      "weight": 70
+    },
+    {
+      "data": {
+        "count": 1,
+        "id": "seidr:complete_undead_tablet"
+      },
+      "weight": 30
+    }
+  ],
+  "totalWeight": 100
+}

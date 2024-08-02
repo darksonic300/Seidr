@@ -1,6 +1,6 @@
 {
-  "type": "seidr:mineshaft_loot",
-  "chanceToSpawn": 0.8,
+  "type": "seidr:ancient_city_loot",
+  "chanceToSpawn": 0.9,
   "conditions": [
     {
       "condition": "minecraft:any_of",

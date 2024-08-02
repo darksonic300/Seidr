@@ -22,7 +22,7 @@ public class SeidrLootDataProvider extends GlobalLootModifierProvider {
     @Override
     protected void start() {
         add("nether_loot_modifiers", new SeidrAddLootModifier(
-                new LootItemCondition[] { LootTableIdCondition.builder(ResourceLocation.fromNamespaceAndPath("minecraft", "chests/ruined_portal"))
+                new LootItemCondition[] { LootTableIdCondition.builder(ResourceLocation.fromNamespaceAndPath("minecraft", "chests/bastion_other"))
                         .or(LootTableIdCondition.builder(ResourceLocation.fromNamespaceAndPath("minecraft", "chests/nether_bridge")))
                         .build() },
                 List.of(
@@ -31,7 +31,7 @@ public class SeidrLootDataProvider extends GlobalLootModifierProvider {
                         WeightedEntry.wrap(new ItemStack(SeidrItems.FIREBALL_TABLET.get(), 1), 60)
                         ),
                 110,
-                0.8f
+                0.9f
         ));
 
         add("mineshaft_loot_modifiers", new SeidrAddLootModifier(
@@ -43,7 +43,47 @@ public class SeidrLootDataProvider extends GlobalLootModifierProvider {
                         WeightedEntry.wrap(new ItemStack(SeidrItems.EFFECT_REMOVE_TABLET.get(), 1), 30)
                 ),
                 100,
-                0.8f
+                0.9f
+        ));
+
+        add("sea_loot_modifiers", new SeidrAddLootModifier(
+                new LootItemCondition[] { LootTableIdCondition.builder(ResourceLocation.fromNamespaceAndPath("minecraft", "chests/shipwreck_supply"))
+                        .or(LootTableIdCondition.builder(ResourceLocation.fromNamespaceAndPath("minecraft", "chests/underwater_ruin_big")))
+                        .build() },
+                List.of(
+                        WeightedEntry.wrap(new ItemStack(SeidrItems.DAMAGED_WALKING_TABLET.get(), 1), 70),
+                        WeightedEntry.wrap(new ItemStack(SeidrItems.EFFECT_REMOVE_TABLET.get(), 1), 30)
+                ),
+                100,
+                0.9f
+        ));
+
+        add("buried_treasure_loot_modifiers", new SeidrAddLootModifier(
+                new LootItemCondition[] { LootTableIdCondition.builder(ResourceLocation.fromNamespaceAndPath("minecraft", "chests/buried_treasure")).build() },
+                List.of(
+                        WeightedEntry.wrap(new ItemStack(SeidrItems.COMPLETE_WALKING_TABLET.get(), 1), 100)),
+                100,
+                0.9f
+        ));
+
+        add("end_city_loot_modifiers", new SeidrAddLootModifier(
+                new LootItemCondition[] { LootTableIdCondition.builder(ResourceLocation.fromNamespaceAndPath("minecraft", "chests/end_city_treasure")).build() },
+                List.of(
+                        WeightedEntry.wrap(new ItemStack(SeidrItems.INCOMPLETE_RESISTANCE_TABLET.get(), 1), 70),
+                        WeightedEntry.wrap(new ItemStack(SeidrItems.COMPLETE_UNDEAD_TABLET.get(), 1), 30)
+                ),
+                100,
+                0.9f
+        ));
+
+        add("ancient_city_loot_modifiers", new SeidrAddLootModifier(
+                new LootItemCondition[] { LootTableIdCondition.builder(ResourceLocation.fromNamespaceAndPath("minecraft", "chests/ancient_city")).build() },
+                List.of(
+                        WeightedEntry.wrap(new ItemStack(SeidrItems.SOUND_BLAST_TABLET.get(), 1), 30),
+                        WeightedEntry.wrap(new ItemStack(SeidrItems.COMPLETE_RESISTANCE_TABLET.get(), 1), 70)
+                ),
+                100,
+                0.9f
         ));
     }
 }

@@ -1,4 +1,8 @@
-// 1.21	2024-08-03T01:13:59.9045726	Global Loot Modifiers : seidr
-b96a1c0bdb959e665bcc5b47474394305d4ea5f3 data/neoforge/loot_modifiers/global_loot_modifiers.json
-1fdd6144e2cba6d5491dac4dbebdf706877e6643 data/seidr/loot_modifiers/mineshaft_loot_modifiers.json
-49f03a6c5409a669c4827452551f2e0db73e597a data/seidr/loot_modifiers/nether_loot_modifiers.json
+// 1.21	2024-08-03T01:51:15.7445003	Global Loot Modifiers : seidr
+12f94d0d927116c0ec8da14931a3f5b664966165 data/neoforge/loot_modifiers/global_loot_modifiers.json
+092e34967416adbe75f92dd6ab81651991be46b5 data/seidr/loot_modifiers/ancient_city_loot_modifiers.json
+1d2c83c836f044226834e460f4ad52e8730e3d7c data/seidr/loot_modifiers/buried_treasure_loot_modifiers.json
+63bcafd9c3f2bff911c4fdfc383fd67cb58f5aa0 data/seidr/loot_modifiers/end_city_loot_modifiers.json
+f87fd0569bb71ece0e7e0745315386ccd26a61c9 data/seidr/loot_modifiers/mineshaft_loot_modifiers.json
+902c4d7f512d03fccf2a1ed23bbbdfcdbca7ee76 data/seidr/loot_modifiers/nether_loot_modifiers.json
+b1e635b64b745290f3265f8934e46ec43608db37 data/seidr/loot_modifiers/sea_loot_modifiers.json

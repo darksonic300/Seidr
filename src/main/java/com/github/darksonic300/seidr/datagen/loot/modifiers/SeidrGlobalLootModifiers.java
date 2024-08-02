@@ -16,4 +16,8 @@ public class SeidrGlobalLootModifiers {
 
     public static final Supplier<MapCodec<SeidrAddLootModifier>> NETHER_LOOT_CODEC = LOOT_MODIFIERS.register("nether_loot", () -> SeidrAddLootModifier.CODEC);
     public static final Supplier<MapCodec<SeidrAddLootModifier>> MINESHAFT_LOOT_CODEC = LOOT_MODIFIERS.register("mineshaft_loot", () -> SeidrAddLootModifier.CODEC);
+    public static final Supplier<MapCodec<SeidrAddLootModifier>> SEA_LOOT_CODEC = LOOT_MODIFIERS.register("sea_loot", () -> SeidrAddLootModifier.CODEC);
+    public static final Supplier<MapCodec<SeidrAddLootModifier>> BURIED_TREASURE_LOOT_CODEC = LOOT_MODIFIERS.register("buried_treasure_loot", () -> SeidrAddLootModifier.CODEC);
+    public static final Supplier<MapCodec<SeidrAddLootModifier>> END_CITY_LOOT_CODEC = LOOT_MODIFIERS.register("end_city_loot", () -> SeidrAddLootModifier.CODEC);
+    public static final Supplier<MapCodec<SeidrAddLootModifier>> ANCIENT_CITY_LOOT_CODEC = LOOT_MODIFIERS.register("ancient_city_loot", () -> SeidrAddLootModifier.CODEC);
 }
