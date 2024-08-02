@@ -14,6 +14,7 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.ai.goal.WrappedGoal;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.projectile.Fireball;
 import net.minecraft.world.entity.projectile.SmallFireball;
@@ -38,6 +39,7 @@ public class SeidrEvents {
         bus.addListener(SeidrEvents::checkForAttractionScroll);
 
         bus.addListener(SeidrEvents::removeAttraction);
+        bus.addListener(SeidrEvents::expireAttraction);
     }
 
 
@@ -127,12 +129,12 @@ public class SeidrEvents {
         }
     }
 
-    public static void removeAttraction(MobEffectEvent.Expired event){
-        List<? extends Animal> list = event.getEntity().level().getEntitiesOfClass(Animal.class, event.getEntity().getBoundingBox().inflate(15, 5, 15));
-        for (Animal animal : list) {
-            animal.goalSelector.removeGoal(new FollowOwnerSummonGoal(animal, event.getEntity(), 1.1f, 5.0f, 2.0f));
-            event.getEntity().sendSystemMessage(Component.literal(animal.goalSelector.getAvailableGoals().toString()));
-        }
+    public static void expireAttraction(MobEffectEvent.Expired event){
+        removeGoal(event.getEntity(), event);
+    }
+
+    public static void removeAttraction(MobEffectEvent.Remove event){
+        removeGoal(event.getEntity(), event);
     }
 
     // Utility Methods
@@ -148,6 +150,17 @@ public class SeidrEvents {
             draugr.setOwnerUUID(entity.getUUID());
             level.addFreshEntity(draugr);
             level.addParticle(SeidrParticleTypes.WAVE_PARTICLE.get(), draugr.getX(), draugr.getY() + 0.05, draugr.getZ(), 0.0D, 0.0D, 0.0D);
+        }
+    }
+
+    private static void removeGoal(LivingEntity entity, MobEffectEvent event) {
+        List<? extends Animal> list = entity.level().getEntitiesOfClass(Animal.class, entity.getBoundingBox().inflate(15, 5, 15));
+        for (Animal animal : list) {
+            for (WrappedGoal wrappedgoal : animal.goalSelector.getAvailableGoals())
+                if (wrappedgoal.getGoal() instanceof FollowOwnerSummonGoal)
+                    wrappedgoal.stop();
+
+            animal.goalSelector.getAvailableGoals().removeIf(goal -> goal.getGoal() instanceof FollowOwnerSummonGoal);
         }
     }
 
