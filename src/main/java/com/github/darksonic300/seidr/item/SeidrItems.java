@@ -22,11 +22,11 @@ public class SeidrItems {
     private static final int DUR_LONG = 100;
 
     // Cooldown defined constants
-    private static final int CD_SHORT = 150;
-    private static final int CD_MEDIUM_SHORT = 200;
-    private static final int CD_MEDIUM = 250;
-    private static final int CD_MEDIUM_LONG = 300;
-    private static final int CD_LONG = 350;
+    private static final int CD_SHORT = 250;
+    private static final int CD_MEDIUM_SHORT = 300;
+    private static final int CD_MEDIUM = 350;
+    private static final int CD_MEDIUM_LONG = 400;
+    private static final int CD_LONG = 450;
 
     //Tablets
     public static final DeferredRegister.Items SCROLL_ITEMS = DeferredRegister.createItems(Seidr.MODID);

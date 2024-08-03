@@ -3,6 +3,7 @@ package com.github.darksonic300.seidr.particle.custom;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.particle.*;
 import net.minecraft.core.particles.SimpleParticleType;
+import net.minecraft.world.phys.Vec3;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.NotNull;
@@ -20,7 +21,7 @@ public class NorseParticle extends TextureSheetParticle {
         this.hasPhysics = false;
         this.friction = 0.9F;
         this.quadSize = 0.15F * (this.random.nextFloat() * 0.2F + 0.5F);
-        this.lifetime = 20;
+        this.lifetime = 30;
 
         this.rCol = 1f;
         this.gCol = 1f;
@@ -35,14 +36,13 @@ public class NorseParticle extends TextureSheetParticle {
     }
 
     @Override
+    public void move(double pX, double pY, double pZ) {
+    }
+
+    @Override
     public void tick() {
-        super.tick();
-        double angle = Math.toRadians(age);
-        float radius = 0.01f;
-        double vx = this.xo + radius * Math.cos(angle);
-        double vz = this.zo + radius * Math.sin(angle);
         this.setSpriteFromAge(spriteSet);
-        this.setPos(vx, this.yo, vz);
+        super.tick();
     }
 
 

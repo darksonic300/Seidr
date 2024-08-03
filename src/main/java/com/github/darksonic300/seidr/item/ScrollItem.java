@@ -8,13 +8,11 @@ import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
-import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import com.github.darksonic300.seidr.client.SeidrSoundEvents;
@@ -93,8 +91,11 @@ public class ScrollItem extends Item {
 
         // Random particles for Client
         if(pLevel.isClientSide) {
+            if (pRemainingUseDuration % 2 == 0) {
+                particleCircle(pLevel, pLivingEntity, SeidrParticleTypes.NORSE_PARTICLE.get(), random, pRemainingUseDuration * 15);
+            }
+
             if (pRemainingUseDuration % 5 == 0) {
-                particleCircle(pLevel, pLivingEntity, SeidrParticleTypes.NORSE_PARTICLE.get());
                 pLevel.addParticle(ParticleTypes.NOTE, pLivingEntity.getX() + (0.5 - random.nextFloat()), pLivingEntity.getY() + 2.1, pLivingEntity.getZ() + (0.5 - random.nextFloat()), 0, 0, 0);
             }
         }
@@ -124,10 +125,18 @@ public class ScrollItem extends Item {
         }
     }
 
-    private static void particleCircle(Level pLevel, LivingEntity pLivingEntity, ParticleOptions particle){
-        pLevel.addParticle(particle, pLivingEntity.getX() + 1, pLivingEntity.getY() + 1, pLivingEntity.getZ(), 0f, 0f, 0f);
-        pLevel.addParticle(particle, pLivingEntity.getX() - 1, pLivingEntity.getY() + 1, pLivingEntity.getZ(), 0f, 0f, 0f);
-        pLevel.addParticle(particle, pLivingEntity.getX(), pLivingEntity.getY() + 1, pLivingEntity.getZ() + 1, 0f, 0f, 0f);
-        pLevel.addParticle(particle, pLivingEntity.getX(), pLivingEntity.getY() + 1, pLivingEntity.getZ() - 1, 0f, 0f, 0f);
+    private static void particleCircle(Level pLevel, LivingEntity pLivingEntity, ParticleOptions particle, RandomSource randomSource, int pRemainingUseDuration){
+        double actualY = pLivingEntity.getY() + 1.2 + (randomSource.nextBoolean() ? 0.05 : -0.05);
+
+        double angle = Math.toRadians(pRemainingUseDuration);
+        double radius = 1.0D;
+        double vx = pLivingEntity.getX() + radius * Math.cos(angle);
+        double vz = pLivingEntity.getZ() + radius * Math.sin(angle);
+        pLevel.addParticle(particle, vx, actualY, vz, 0f, 0f, 0f);
+
+//        pLevel.addParticle(particle, pLivingEntity.getX() + 1, pLivingEntity.getY() + 1, pLivingEntity.getZ(), 0f, 0f, 0f);
+//        pLevel.addParticle(particle, pLivingEntity.getX() - 1, pLivingEntity.getY() + 1, pLivingEntity.getZ(), 0f, 0f, 0f);
+//        pLevel.addParticle(particle, pLivingEntity.getX(), pLivingEntity.getY() + 1, pLivingEntity.getZ() + 1, 0f, 0f, 0f);
+//        pLevel.addParticle(particle, pLivingEntity.getX(), pLivingEntity.getY() + 1, pLivingEntity.getZ() - 1, 0f, 0f, 0f);
     }
 }
