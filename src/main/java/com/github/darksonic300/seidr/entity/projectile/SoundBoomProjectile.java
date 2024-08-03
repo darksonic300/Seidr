@@ -23,50 +23,14 @@ public class SoundBoomProjectile extends AbstractHurtingProjectile {
         this.setNoGravity(true);
     }
 
+    public SoundBoomProjectile(double pX, double pY, double pZ, Level pLevel) {
+        this(SeidrEntityTypes.SONIC_BOOM_PROJECTILE.get(), pLevel);
+        this.setPos(pX, pY, pZ);
+    }
+
     public SoundBoomProjectile(Level level, LivingEntity shooter, double accelX, double accelY, double accelZ) {
         super(SeidrEntityTypes.SONIC_BOOM_PROJECTILE.get(), shooter, new Vec3(accelX, accelY, accelZ), level);
         this.setNoGravity(true);
-    }
-
-    @Override
-    public void tick() {
-        if (!this.onGround()) {
-            ++this.ticksInAir;
-        }
-        if (this.ticksInAir > 5) {
-            if (!this.level().isClientSide()) {
-                this.discard();
-            }
-        }
-        if (this.level().isClientSide() || (this.getOwner() == null || this.getOwner().isAlive()) && this.level().hasChunkAt(this.blockPosition())) {
-            HitResult hitResult = ProjectileUtil.getHitResultOnMoveVector(this, this::canHitEntity);
-            if (hitResult.getType() != HitResult.Type.MISS && !EventHooks.onProjectileImpact(this, hitResult)) {
-                this.onHit(hitResult);
-            }
-
-            this.checkInsideBlocks();
-            Vec3 vec3 = this.getDeltaMovement();
-            double d0 = this.getX() + vec3.x();
-            double d1 = this.getY() + vec3.y();
-            double d2 = this.getZ() + vec3.z();
-            double d4 = vec3.horizontalDistance();
-            this.setYRot((float)(Mth.atan2(-vec3.x, -vec3.z) * 180.0F / (float)Math.PI));
-
-            this.setXRot((float)(Mth.atan2(vec3.y, d4) * 180.0F / (float)Math.PI));
-            this.setXRot(lerpRotation(this.xRotO, this.getXRot()));
-            this.setYRot(lerpRotation(this.yRotO, this.getYRot()));
-            float f = this.getInertia();
-
-            this.setDeltaMovement(vec3.scale(f));
-            ParticleOptions particleoptions = this.getTrailParticle();
-            if (particleoptions != null) {
-                this.level().addParticle(particleoptions, d0, d1, d2, 0.0, 0.0, 0.0);
-            }
-
-            this.setPos(d0, d1, d2);
-        } else {
-            this.discard();
-        }
     }
 
     @Override

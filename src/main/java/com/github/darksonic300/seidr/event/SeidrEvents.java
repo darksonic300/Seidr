@@ -14,8 +14,10 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.goal.WrappedGoal;
 import net.minecraft.world.entity.animal.Animal;
+import net.minecraft.world.entity.projectile.LargeFireball;
 import net.minecraft.world.entity.projectile.SmallFireball;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.Vec3;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.event.entity.living.LivingEntityUseItemEvent;
 import net.neoforged.neoforge.event.entity.living.MobEffectEvent;
@@ -60,17 +62,30 @@ public class SeidrEvents {
             }
 
             if (event.getDuration() == 0) {
-                SoundBoomProjectile projectile = new SoundBoomProjectile(event.getEntity().level(), event.getEntity(), 10f,10f,10f);
-                projectile.moveTo(projectile.getX(), projectile.getY() + 0.5, projectile.getZ());
-                projectile.shootFromRotation(event.getEntity(), event.getEntity().getXRot(), event.getEntity().getYRot(), 0.0F, 8.0F, 0.0F);
-
-                event.getEntity().level().addFreshEntity(projectile);
+                LivingEntity entity = event.getEntity();
+                SoundBoomProjectile projectile = new SoundBoomProjectile(entity.level(), entity, 0f, 0f, 0f);
+                projectile.setPos(entity.getX(), entity.getEyeY(), entity.getZ());
+                projectile.shootFromRotation(entity, entity.getXRot(), entity.getYRot(), 0.0F, 7.0F, 0.0F);
+                entity.level().addFreshEntity(projectile);
 
                 // TODO: Relay sound effect to projectile
-                event.getEntity().playSound(SoundEvents.WARDEN_SONIC_BOOM, 0.5F, 1.0F);
+                entity.playSound(SoundEvents.WARDEN_SONIC_BOOM, 0.5F, 1.0F);
             }
         }
     }
+
+    public static void checkForFireballScroll(LivingEntityUseItemEvent event) {
+        if(event.getDuration() == 0) {
+            LivingEntity entity = event.getEntity();
+            if (event.getItem().is(SeidrItems.FIREBALL_SCROLL.get())) {
+                LargeFireball projectile = new LargeFireball(entity.level(), entity, new Vec3(0f, 0f, 0f), 1);
+                projectile.setPos(entity.getX(), entity.getEyeY(), entity.getZ());
+                projectile.shootFromRotation(entity, entity.getXRot(), entity.getYRot(), 0.0F, 1.0F, 0.0F);
+                entity.level().addFreshEntity(projectile);
+            }
+        }
+    }
+
 
     public static void checkForResistanceScroll(LivingEntityUseItemEvent event) {
         if(event.getDuration() == 0) {
@@ -81,19 +96,6 @@ public class SeidrEvents {
                 entity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 200, 2));
             } else if (event.getItem().is(SeidrItems.COMPLETE_RESISTANCE_SCROLL.get())) {
                 entity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 200, 3));
-            }
-        }
-    }
-
-    public static void checkForFireballScroll(LivingEntityUseItemEvent event) {
-        if(event.getDuration() == 0) {
-            LivingEntity entity = event.getEntity();
-            if (event.getItem().is(SeidrItems.FIREBALL_SCROLL.get())) {
-                SmallFireball projectile = new SmallFireball(event.getEntity().level(), 5f,5f,5f, entity.getDeltaMovement());
-
-                projectile.moveTo(event.getEntity().getX(), event.getEntity().getEyeHeight(), event.getEntity().getZ(), 0, 0);
-                projectile.shootFromRotation(event.getEntity(), event.getEntity().getXRot(), event.getEntity().getYRot(), 0.0F, 5.0F, 0.0F);
-                event.getEntity().level().addFreshEntity(projectile);
             }
         }
     }
