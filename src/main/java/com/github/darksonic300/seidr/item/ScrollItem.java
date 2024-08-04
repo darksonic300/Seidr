@@ -4,11 +4,14 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.player.Player;
@@ -19,6 +22,7 @@ import com.github.darksonic300.seidr.client.SeidrSoundEvents;
 import com.github.darksonic300.seidr.particle.SeidrParticleTypes;
 
 import java.util.List;
+import java.util.function.Consumer;
 
 public class ScrollItem extends Item {
     private int cooldown;
@@ -69,7 +73,7 @@ public class ScrollItem extends Item {
     public ItemStack finishUsingItem(ItemStack pStack, Level pLevel, LivingEntity pLivingEntity) {
         if (pLivingEntity instanceof Player player)
             player.getCooldowns().addCooldown(this, cooldown);
-        // Decrease durability here
+        pStack.hurtAndBreak(1, pLivingEntity, EquipmentSlot.MAINHAND);
         pLevel.addParticle(SeidrParticleTypes.WAVE_PARTICLE.get(), pLivingEntity.getX(), pLivingEntity.getY() + 0.05, pLivingEntity.getZ(), 0.0D, 0.0D, 0.0D);
         return pStack;
     }
