@@ -5,6 +5,7 @@ import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.players.OldUsersConverter;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -46,6 +47,7 @@ public class Draugr extends Zombie implements OwnableEntity {
 
     public static AttributeSupplier.Builder createAttributes() {
         return Monster.createMonsterAttributes()
+                .add(Attributes.MAX_HEALTH, 40.0D)
                 .add(Attributes.FOLLOW_RANGE, 35.0)
                 .add(Attributes.MOVEMENT_SPEED, 0.23F)
                 .add(Attributes.ATTACK_DAMAGE, 3.0)
@@ -89,6 +91,14 @@ public class Draugr extends Zombie implements OwnableEntity {
         if (uuid != null) {
             this.setOwnerUUID(uuid);
         }
+    }
+
+    @Override
+    public boolean hurt(DamageSource pSource, float pAmount) {
+        if(this.getOwner().is(pSource.getEntity()))
+            return false;
+
+        return super.hurt(pSource, pAmount);
     }
 
     @Nullable

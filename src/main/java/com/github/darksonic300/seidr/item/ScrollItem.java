@@ -91,9 +91,7 @@ public class ScrollItem extends Item {
 
         // Random particles for Client
         if(pLevel.isClientSide) {
-            if (pRemainingUseDuration % 2 == 0) {
-                particleCircle(pLevel, pLivingEntity, SeidrParticleTypes.NORSE_PARTICLE.get(), random, pRemainingUseDuration * 15);
-            }
+            particleCircle(pLevel, pLivingEntity, SeidrParticleTypes.NORSE_PARTICLE.get(), random, pRemainingUseDuration * 18);
 
             if (pRemainingUseDuration % 5 == 0) {
                 pLevel.addParticle(ParticleTypes.NOTE, pLivingEntity.getX() + (0.5 - random.nextFloat()), pLivingEntity.getY() + 2.1, pLivingEntity.getZ() + (0.5 - random.nextFloat()), 0, 0, 0);
