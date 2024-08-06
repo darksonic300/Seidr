@@ -20,26 +20,26 @@ public class SeidrLanguageData extends LanguageProvider {
         addScroll(SeidrItems.FIREBALL_SCROLL, "Fireball", "- Shoots a powerful fireball");
         addScroll(SeidrItems.SOUND_BLAST_SCROLL, "Echo" , "- Harnesses the power of the Warden");
 
-        addIncompleteScroll(SeidrItems.INCOMPLETE_UNDEAD_SCROLL, "the Undead", "- Summons undead mobs to fight for you");
+        addIncompleteScroll(SeidrItems.INCOMPLETE_UNDEAD_SCROLL, "Undead", "- Summons undead mobs to fight for you");
         addIncompleteScroll(SeidrItems.INCOMPLETE_RESISTANCE_SCROLL, "Endurance", "- Decreases incoming damage");
-        addDamagedScroll(SeidrItems.DAMAGED_UNDEAD_SCROLL, "the Undead", "- Summons undead mobs to fight for you");
+        addDamagedScroll(SeidrItems.DAMAGED_UNDEAD_SCROLL, "Undead", "- Summons undead mobs to fight for you");
         addDamagedScroll(SeidrItems.DAMAGED_RESISTANCE_SCROLL, "Resilience", "- Decreases incoming damage");
         addDamagedScroll(SeidrItems.DAMAGED_WALKING_SCROLL, "Light Walk", "- Makes you walk on water");
-        addCompleteScroll(SeidrItems.COMPLETE_UNDEAD_SCROLL, "the Undead", "- Summons undead mobs to fight for you");
+        addCompleteScroll(SeidrItems.COMPLETE_UNDEAD_SCROLL, "Undead", "- Summons undead mobs to fight for you");
         addCompleteScroll(SeidrItems.COMPLETE_RESISTANCE_SCROLL, "Resilience", "- Decreases incoming damage");
         addCompleteScroll(SeidrItems.COMPLETE_WALKING_SCROLL, "Light Walk", "- Makes you walk on water");
     }
 
     public void addScroll(Supplier<? extends ScrollItem> key, String name, String description) {
-        this.add(key.get().getDescriptionId(), "Scroll of " + name);
+        this.add(key.get().getDescriptionId(), "Norse Scroll");
         this.add("tooltip." + key.get().getDescriptionId() + ".description" , description);
-        this.add(key.get().getDescriptionId().replaceFirst("scroll", "tablet"), "Tablet of " + name);
+        this.add(key.get().getDescriptionId().replaceFirst("scroll", "tablet"), "Ruined Tablet");
     }
 
     public void addScroll(String prefix, Supplier<? extends ScrollItem> key, String name, String description) {
-        this.add(key.get().getDescriptionId(), prefix + " Scroll of " + name);
+        this.add(key.get().getDescriptionId(), prefix + " Norse Scroll");
         this.add("tooltip." + key.get().getDescriptionId() + ".description" , description);
-        this.add(key.get().getDescriptionId().replaceFirst("scroll", "tablet"), prefix +" Tablet of " + name);
+        this.add(key.get().getDescriptionId().replaceFirst("scroll", "tablet"), prefix + " Ruined Tablet");
     }
 
     public void addIncompleteScroll(Supplier<? extends ScrollItem> key, String name, String description) {

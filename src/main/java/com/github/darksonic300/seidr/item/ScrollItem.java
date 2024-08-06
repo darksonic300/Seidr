@@ -42,8 +42,8 @@ public class ScrollItem extends Item {
 
     @Override
     public void appendHoverText(ItemStack pStack, TooltipContext pContext, List<Component> pTooltipComponents, TooltipFlag pTooltipFlag) {
-        pTooltipComponents.add(Component.literal(norse).withStyle(ChatFormatting.GOLD));
-        pTooltipComponents.add(Component.translatable("tooltip.item.seidr." + name + "_scroll.description").withStyle(ChatFormatting.GRAY));
+        pTooltipComponents.add(1, Component.literal(norse).withStyle(ChatFormatting.GRAY));
+        pTooltipComponents.add(2, Component.translatable("tooltip.item.seidr." + name + "_scroll.description").withStyle(ChatFormatting.GRAY));
     }
 
     public int getCooldown() {
@@ -128,17 +128,12 @@ public class ScrollItem extends Item {
     }
 
     private static void particleCircle(Level pLevel, LivingEntity pLivingEntity, ParticleOptions particle, RandomSource randomSource, int pRemainingUseDuration){
-        double actualY = pLivingEntity.getY() + 1.2 + (randomSource.nextBoolean() ? 0.05 : -0.05);
+        double zY1 = pLivingEntity.getY() + 1.2 + (randomSource.nextBoolean() ? 0.05 : -0.05);
 
         double angle = Math.toRadians(pRemainingUseDuration);
         double radius = 1.0D;
-        double vx = pLivingEntity.getX() + radius * Math.cos(angle);
-        double vz = pLivingEntity.getZ() + radius * Math.sin(angle);
-        pLevel.addParticle(particle, vx, actualY, vz, 0f, 0f, 0f);
-
-//        pLevel.addParticle(particle, pLivingEntity.getX() + 1, pLivingEntity.getY() + 1, pLivingEntity.getZ(), 0f, 0f, 0f);
-//        pLevel.addParticle(particle, pLivingEntity.getX() - 1, pLivingEntity.getY() + 1, pLivingEntity.getZ(), 0f, 0f, 0f);
-//        pLevel.addParticle(particle, pLivingEntity.getX(), pLivingEntity.getY() + 1, pLivingEntity.getZ() + 1, 0f, 0f, 0f);
-//        pLevel.addParticle(particle, pLivingEntity.getX(), pLivingEntity.getY() + 1, pLivingEntity.getZ() - 1, 0f, 0f, 0f);
+        double vx1 = pLivingEntity.getX() + radius * Math.cos(angle);
+        double vz1 = pLivingEntity.getZ() + radius * Math.sin(angle);
+        pLevel.addParticle(particle, vx1, zY1, vz1, 0f, 0f, 0f);
     }
 }
