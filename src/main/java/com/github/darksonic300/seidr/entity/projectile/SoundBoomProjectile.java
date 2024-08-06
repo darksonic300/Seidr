@@ -45,7 +45,7 @@ public class SoundBoomProjectile extends AbstractHurtingProjectile {
     protected void onHitEntity(EntityHitResult pResult) {
         super.onHitEntity(pResult);
         if (this.getOwner() instanceof LivingEntity owner)
-            pResult.getEntity().hurt(damageSources().indirectMagic(owner, this), 20.0f);
+            pResult.getEntity().hurt(damageSources().indirectMagic(owner, this), 30.0f);
     }
 
     @Override
