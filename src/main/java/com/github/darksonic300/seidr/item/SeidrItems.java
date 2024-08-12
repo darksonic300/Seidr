@@ -26,10 +26,11 @@ public class SeidrItems {
     private static final int CD_MEDIUM_LONG = 400;
     private static final int CD_LONG = 450;
 
-    //Tablets
     public static final DeferredRegister.Items SCROLL_ITEMS = DeferredRegister.createItems(Seidr.MODID);
     public static final DeferredRegister.Items TABLET_ITEMS = DeferredRegister.createItems(Seidr.MODID);
+    public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(Seidr.MODID);
 
+    //Tablets
     public static final DeferredItem<Item> INCOMPLETE_UNDEAD_TABLET = registerTablet("incomplete_undead", "Draugr");
     public static final DeferredItem<Item> DAMAGED_UNDEAD_TABLET = registerTablet("damaged_undead", "Draugr");
     public static final DeferredItem<Item> COMPLETE_UNDEAD_TABLET = registerTablet("complete_undead", "Draugr");
@@ -66,6 +67,13 @@ public class SeidrItems {
     public static final DeferredItem<ScrollItem> COMPLETE_WALKING_SCROLL = registerScroll("complete_walking", CD_MEDIUM, DUR_MEDIUM_LONG, "Ganga");
 
     public static final DeferredItem<ScrollItem> ATTRACTION_SCROLL = registerScroll("attraction", CD_MEDIUM, DUR_MEDIUM_LONG, "Ást");
+
+
+    // Other Items
+    public static final DeferredItem<Item> LLAMA_FUR = ITEMS.register("llama_fur", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> SACRIFICIAL_KNIFE = ITEMS.register("sacrificial_knife", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> FOX_TAIL = ITEMS.register("fox_tail", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> FOX_HAT = ITEMS.register("fox_hat", () -> new Item(new Item.Properties()));
 
 
     private static DeferredItem<ScrollItem> registerScroll(String name, int cooldown, int duration, String norse){
