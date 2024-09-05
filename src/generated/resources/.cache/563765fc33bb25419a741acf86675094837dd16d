@@ -1,4 +1,4 @@
-// 1.21	2024-07-30T21:16:07.6378349	Item Models: seidr
+// 1.21	2024-08-13T00:39:34.408235	Item Models: seidr
 bb7698f6bef81df0a586e99819d1fd5f5013bae4 assets/seidr/models/item/attraction_scroll.json
 10ddcf25540e1c306494daefdd7114cf38c82a74 assets/seidr/models/item/attraction_tablet.json
 bb7698f6bef81df0a586e99819d1fd5f5013bae4 assets/seidr/models/item/complete_resistance_scroll.json
@@ -17,9 +17,13 @@ bb7698f6bef81df0a586e99819d1fd5f5013bae4 assets/seidr/models/item/effect_remove_
 10ddcf25540e1c306494daefdd7114cf38c82a74 assets/seidr/models/item/effect_remove_tablet.json
 bb7698f6bef81df0a586e99819d1fd5f5013bae4 assets/seidr/models/item/fireball_scroll.json
 10ddcf25540e1c306494daefdd7114cf38c82a74 assets/seidr/models/item/fireball_tablet.json
+6b16a1c1b82c3d1af37142ed5ab0cfc38240ecf3 assets/seidr/models/item/fox_hat.json
+62af15d84297938b252d6dcfa81f833964dc282e assets/seidr/models/item/fox_tail.json
 bb7698f6bef81df0a586e99819d1fd5f5013bae4 assets/seidr/models/item/incomplete_resistance_scroll.json
 10ddcf25540e1c306494daefdd7114cf38c82a74 assets/seidr/models/item/incomplete_resistance_tablet.json
 bb7698f6bef81df0a586e99819d1fd5f5013bae4 assets/seidr/models/item/incomplete_undead_scroll.json
 10ddcf25540e1c306494daefdd7114cf38c82a74 assets/seidr/models/item/incomplete_undead_tablet.json
+39ca1d22b709fa62bd9e9db9efc39d897f9af596 assets/seidr/models/item/llama_fur.json
+dbd0017b15241bc9e9c78a39a9526be5ff43734d assets/seidr/models/item/sacrificial_knife.json
 bb7698f6bef81df0a586e99819d1fd5f5013bae4 assets/seidr/models/item/sound_blast_scroll.json
 10ddcf25540e1c306494daefdd7114cf38c82a74 assets/seidr/models/item/sound_blast_tablet.json

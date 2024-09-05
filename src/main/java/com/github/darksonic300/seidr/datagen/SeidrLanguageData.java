@@ -28,6 +28,11 @@ public class SeidrLanguageData extends LanguageProvider {
         addCompleteScroll(SeidrItems.COMPLETE_UNDEAD_SCROLL, "Undead", "- Summons undead mobs to fight for you");
         addCompleteScroll(SeidrItems.COMPLETE_RESISTANCE_SCROLL, "Resilience", "- Decreases incoming damage");
         addCompleteScroll(SeidrItems.COMPLETE_WALKING_SCROLL, "Light Walk", "- Makes you walk on water");
+
+        this.add(SeidrItems.LLAMA_FUR.get().getDescriptionId(), "Llama Fur");
+        this.add(SeidrItems.SACRIFICIAL_KNIFE.get().getDescriptionId(), "Sacrificial Knife");
+        this.add(SeidrItems.FOX_TAIL.get().getDescriptionId(), "Fox Tail");
+        this.add(SeidrItems.FOX_HAT.get().getDescriptionId(), "Fox Hat");
     }
 
     public void addScroll(Supplier<? extends ScrollItem> key, String name, String description) {

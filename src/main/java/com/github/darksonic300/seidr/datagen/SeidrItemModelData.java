@@ -22,6 +22,11 @@ public class SeidrItemModelData extends ItemModelProvider {
 
         for(DeferredHolder<Item, ? extends Item> item : SeidrItems.TABLET_ITEMS.getEntries())
             this.tabletItem(item.get());
+
+        this.item(SeidrItems.SACRIFICIAL_KNIFE.get());
+        this.item(SeidrItems.LLAMA_FUR.get());
+        this.item(SeidrItems.FOX_TAIL.get());
+        this.item(SeidrItems.FOX_HAT.get());
     }
 
     public void scrollItem(Item item){
@@ -34,5 +39,20 @@ public class SeidrItemModelData extends ItemModelProvider {
     public void tabletItem(Item item){
         this.withExistingParent(BuiltInRegistries.ITEM.getKey(item).getPath(), mcLoc("item/generated"))
                 .texture("layer0", modLoc("item/tablet"));
+    }
+
+    public void item(Item item) {
+        this.withExistingParent(this.itemName(item), mcLoc("item/generated"))
+                .texture("layer0", modLoc("item/" + this.itemName(item)));
+    }
+
+
+    public String itemName(Item item) {
+        ResourceLocation location = BuiltInRegistries.ITEM.getKey(item);
+        if (location != null) {
+            return location.getPath();
+        } else {
+            throw new IllegalStateException("Unknown item: " + item.toString());
+        }
     }
 }

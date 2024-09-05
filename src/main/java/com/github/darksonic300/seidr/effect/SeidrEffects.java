@@ -13,4 +13,5 @@ public class SeidrEffects {
 
     public static final DeferredHolder<MobEffect, ? extends MobEffect> LIQUID_WALK = MOB_EFFECTS.register("liquid_walk", () -> new LiquidWalkEffect(MobEffectCategory.BENEFICIAL, 3402751));
     public static final DeferredHolder<MobEffect, ? extends MobEffect> ATTRACTION = MOB_EFFECTS.register("attraction", () -> new AttractionEffect(MobEffectCategory.NEUTRAL, 16262179));
+    public static final DeferredHolder<MobEffect, ? extends MobEffect> SACRIFICE = MOB_EFFECTS.register("sacrifice", () -> new SacrificeEffect(MobEffectCategory.HARMFUL, 16262179));
 }

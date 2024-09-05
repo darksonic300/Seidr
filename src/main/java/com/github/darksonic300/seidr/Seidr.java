@@ -45,6 +45,7 @@ public class Seidr
 
         SeidrItems.SCROLL_ITEMS.register(modEventBus);
         SeidrItems.TABLET_ITEMS.register(modEventBus);
+        SeidrItems.ITEMS.register(modEventBus);
         SeidrSoundEvents.SOUNDS.register(modEventBus);
         SeidrEntityTypes.ENTITY_TYPES.register(modEventBus);
         SeidrParticleTypes.PARTICLE_TYPES.register(modEventBus);

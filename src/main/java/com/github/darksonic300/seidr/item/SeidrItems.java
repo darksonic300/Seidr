@@ -2,6 +2,7 @@ package com.github.darksonic300.seidr.item;
 
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
+import net.minecraft.world.item.Tiers;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import com.github.darksonic300.seidr.Seidr;
@@ -71,7 +72,7 @@ public class SeidrItems {
 
     // Other Items
     public static final DeferredItem<Item> LLAMA_FUR = ITEMS.register("llama_fur", () -> new Item(new Item.Properties()));
-    public static final DeferredItem<Item> SACRIFICIAL_KNIFE = ITEMS.register("sacrificial_knife", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> SACRIFICIAL_KNIFE = ITEMS.register("sacrificial_knife", () -> new KnifeItem(Tiers.STONE, new Item.Properties().durability(150).stacksTo(1)));
     public static final DeferredItem<Item> FOX_TAIL = ITEMS.register("fox_tail", () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> FOX_HAT = ITEMS.register("fox_hat", () -> new Item(new Item.Properties()));
 
