@@ -69,6 +69,11 @@ public class SeidrItems {
 
     public static final DeferredItem<ScrollItem> ATTRACTION_SCROLL = registerScroll("attraction", CD_MEDIUM, DUR_MEDIUM_LONG, "Ást");
 
+    // Instruments
+    public static final DeferredItem<InstrumentsItem> REBEC_INSTRUMENTS = registerInstrument("Rebec", 100,90);
+
+
+
 
     // Other Items
     public static final DeferredItem<Item> LLAMA_FUR = ITEMS.register("llama_fur", () -> new Item(new Item.Properties()));
@@ -79,6 +84,10 @@ public class SeidrItems {
 
     private static DeferredItem<ScrollItem> registerScroll(String name, int cooldown, int duration, String norse){
         return SCROLL_ITEMS.register(name + "_scroll", () -> new ScrollItem(new Item.Properties().stacksTo(1).durability(25).rarity(Rarity.RARE), name, cooldown, duration, norse));
+    }
+
+    private static DeferredItem<InstrumentsItem> registerInstrument(String name, int cooldown, int duration){
+        return ITEMS.register(name, () -> new InstrumentsItem(new Item.Properties().stacksTo(1).durability(25).rarity(Rarity.RARE), name, cooldown, duration));
     }
 
     private static DeferredItem<Item> registerTablet(String name, String norse){
