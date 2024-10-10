@@ -15,6 +15,10 @@ public class SeidrSoundEvents {
     public static final DeferredHolder<SoundEvent, SoundEvent> ITEM_SCROLL_MEDIUM = register("item.scroll.medium");
     public static final DeferredHolder<SoundEvent, SoundEvent> ITEM_SCROLL_HIGH = register("item.scroll.high");
 
+    //instruments
+    public static final DeferredHolder<SoundEvent,SoundEvent> ITEM_REBEC_SOUND = register("item.rebec.sound");
+
+
     private static DeferredHolder<SoundEvent, SoundEvent> register(String location) {
         return SOUNDS.register(location, () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath(Seidr.MODID, location)));
     }

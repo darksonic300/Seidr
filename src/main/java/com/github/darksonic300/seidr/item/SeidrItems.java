@@ -70,7 +70,8 @@ public class SeidrItems {
     public static final DeferredItem<ScrollItem> ATTRACTION_SCROLL = registerScroll("attraction", CD_MEDIUM, DUR_MEDIUM_LONG, "Ást");
 
     // Instruments
-    public static final DeferredItem<InstrumentsItem> REBEC_INSTRUMENTS = registerInstrument("Rebec", 100,90);
+    public static final DeferredItem<InstrumentsItem> REBEC_INSTRUMENTS = registerInstrument("rebec", 100,90);
+
 
 
 

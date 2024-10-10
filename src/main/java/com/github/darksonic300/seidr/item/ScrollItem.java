@@ -44,6 +44,7 @@ public class ScrollItem extends Item {
     public void appendHoverText(ItemStack pStack, TooltipContext pContext, List<Component> pTooltipComponents, TooltipFlag pTooltipFlag) {
         pTooltipComponents.add(1, Component.literal(norse).withStyle(ChatFormatting.GRAY));
         pTooltipComponents.add(2, Component.translatable("tooltip.item.seidr." + name + "_scroll.description").withStyle(ChatFormatting.GRAY));
+
     }
 
     public int getCooldown() {

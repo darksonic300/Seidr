@@ -30,6 +30,7 @@ public class InstrumentsItem extends Item {
     private int duration;
     private boolean currentlyUsing;
     private String name;
+
     public InstrumentsItem(Properties pProperties, String name, int cooldown, int duration) {
         super(pProperties);
         this.name = name;
@@ -43,6 +44,28 @@ public class InstrumentsItem extends Item {
     public boolean ifInUse() {
         return currentlyUsing;}
 
+    @Override
+    public int getUseDuration(ItemStack pStack, LivingEntity livingEntity) {
+        return duration;
+    }
+
+    @Override
+    public InteractionResultHolder<ItemStack> use(Level pLevel, Player pPlayer, InteractionHand pUsedHand) {
+        ItemStack i = pPlayer.getItemInHand(pUsedHand);
+        if(i.is(SeidrItems.REBEC_INSTRUMENTS.get()))
+            pLevel.playSound(  pPlayer,
+                    pPlayer.getX(),
+                    pPlayer.getY(),
+                    pPlayer.getZ(),
+                    SeidrSoundEvents.ITEM_REBEC_SOUND,
+                    SoundSource.VOICE,
+                    0.8F,
+                    1.0F);
+
+
+        this.currentlyUsing = true;
+        return ItemUtils.startUsingInstantly(pLevel, pPlayer, pUsedHand);
+    }
 
 
 

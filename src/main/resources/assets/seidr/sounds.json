@@ -13,6 +13,11 @@
     "sounds": [
       "seidr:highpitch"
     ]
+  },
+  "item.rebec.sound": {
+    "sounds": [
+      "seidr:rebec"
+    ]
   }
 }
 
